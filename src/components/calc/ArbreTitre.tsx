@@ -27,7 +27,7 @@ const MOTIFS: Array<[Motif, string, string]> = [
 
 export default function ArbreTitre({ lang = 'fr', methodHref }: { lang?: L; methodHref?: string }) {
   const f = fmt(lang);
-  const [s, set] = useUrl({ nat: 'autre', motif: 'qualifie', salaire: 45000, master: '0', annees: 0, mariage: 1 });
+  const [s, set] = useUrl({ nat: 'autre', motif: 'qualifie', salaire: 45000, master: '1', annees: 0, mariage: 1 });
   const o = orienter({ nationalite: s.nat as Nationalite, motif: s.motif as Motif, salaire: s.salaire, master: s.master === '1', annees: s.annees, anneesMariage: s.mariage });
   const id = o.principal.titre;
   const hors = o.horsTitre === 'ue';

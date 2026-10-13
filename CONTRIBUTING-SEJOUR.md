@@ -16,7 +16,7 @@ Notice pour les agents qui prolongent le site (titres de séjour, nationalité, 
 | Fichier | Contenu | Origine |
 |---|---|---|
 | `src/data/params-2026.json` | Barème des timbres du 1er mai 2026, Smic (série), seuils talent, regroupement familial, durées, délais légaux, 70 sources datées | Fiches Service-Public relues le 2026-10-13, Insee, arrêtés cités |
-| `research/service-public/F*.md` | Texte structuré de 62 fiches Service-Public (Licence ouverte Etalab 2.0), date de vérification en tête | `curl` + conversion le 2026-10-13 |
+| `research/service-public/F*.md` | Texte structuré de 61 fiches et d’une actualité Service-Public (Licence ouverte Etalab 2.0), date de vérification en tête | `curl` + conversion le 2026-10-13 |
 | `research/service-public/_index.json` | Titre, date et liste « Textes de loi et références » (articles CESEDA, Code civil, arrêtés, liens Légifrance) de chaque fiche | idem |
 
 Moteurs testés (`tests/engine.test.ts`, 54 cas) : `src/lib/engine/couts.ts` (timbres par titre et démarche, parcours), `smic.ts` (Smic à une date, moyenne des 12 mois), `famille.ts` (seuil et logement du regroupement familial), `dates-sejour.ts` (naturalisation, mariage, carte de résident, pluriannuelle, renouvellement, VLS-TS, refus implicite), `travail.ts` (seuils talent, carte bleue, RECE, taxe employeur), `arbre.ts` (orientation « quel titre »).

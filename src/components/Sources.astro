@@ -10,13 +10,14 @@
  * Contrôlé par scripts/check-seo.py (échec si < 3 liens officiels sur le pilier).
  */
 import P from '../data/params-2026.json';
+import { displayDate } from '../lib/format';
 interface Props { lang: string }
 const { lang } = Astro.props;
 
 const INTRO: Record<string, string> = {
-  fr: 'Chaque chiffre de cette page provient d’une de ces sources officielles, consultées le',
+  fr: 'Fiches, textes et séries relus pour ce site sur le droit au séjour ; dernière vérification le',
   de: 'Jede Zahl auf dieser Seite stammt aus einer dieser amtlichen Quellen, abgerufen am',
-  en: 'Every figure on this page comes from one of these official sources, read on',
+  en: 'Official pages, legal texts and data series read for this site on French residence rules; last checked on',
   es: 'Cada cifra de esta página procede de una de estas fuentes oficiales, consultadas el',
   nl: 'Elk bedrag op deze pagina komt uit een van deze officiële bronnen, geraadpleegd op',
   it: 'Ogni cifra di questa pagina proviene da una di queste fonti ufficiali, consultate il',
@@ -34,7 +35,7 @@ const sources: Src[] = Object.values((P as { sources?: Record<string, Src> }).so
 {sources.length > 0 && (
   <>
     <h2 id="sources">{H2[lang] ?? H2.en}</h2>
-    <p>{INTRO[lang] ?? INTRO.en} {P.retrieved_at}.</p>
+    <p>{INTRO[lang] ?? INTRO.en} {displayDate(P.retrieved_at, lang === 'fr' ? 'fr-FR' : 'en-GB')}.</p>
     <ul>
       {sources.map((s) => (
         <li><a href={s.url} rel="nofollow noopener" target="_blank">{s.label[lang] ?? s.label.en}</a></li>

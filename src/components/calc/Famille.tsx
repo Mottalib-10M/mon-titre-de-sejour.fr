@@ -43,7 +43,7 @@ export default function RegroupementCalc({ lang = 'fr', methodHref, focus = 'res
           <DateField id="rf-d" label={T(lang, 'Date de dépôt de la demande', 'Filing date')} value={s.depot} onChange={set('depot')} />
         </Row2>
         <Row2>
-          <NumberField id="rf-r" label={T(lang, 'Ressources brutes moyennes par mois', 'Average gross income per month')} value={s.ressources} onChange={set('ressources')} unit="€" max={100000} lang={lang} help={T(lang, '12 derniers mois, couple, hors prestations familiales et RSA', 'Last 12 months, couple, excluding family benefits and RSA')} />
+          <NumberField id="rf-r" label={T(lang, 'Ressources brutes moyennes par mois', 'Average gross income per month')} value={s.ressources} onChange={set('ressources')} unit="€" max={100000} lang={lang} help={T(lang, 'Couple, sur 12 mois', 'Couple, over 12 months')} />
           <Toggle id="rf-aah" label={T(lang, 'Bénéficiaire de l’AAH ou de l’ASI', 'Receiving AAH or ASI')} value={s.aah} onChange={set('aah')} options={[{ value: '0', label: T(lang, 'Non', 'No') }, { value: '1', label: T(lang, 'Oui', 'Yes') }]} />
         </Row2>
         <Row2>
@@ -56,7 +56,7 @@ export default function RegroupementCalc({ lang = 'fr', methodHref, focus = 'res
         rows={[...(focus === 'logement' ? [...logementRows, ressourcesRows[3]] : [...ressourcesRows, logementRows[0]]),
           { label: T(lang, `Timbres pour ${f.num(membres)} membre(s) de la famille`, `Stamps for ${f.num(membres)} family member(s)`), value: f.eur(timbres) },
           { label: T(lang, 'Sans réponse, refus implicite le', 'No answer means refusal on'), value: f.date(regroupementImplicite(s.depot)) }]}
-        note={T(lang, 'Chaque mois prend le Smic en vigueur le 1er du mois : un dépôt qui couvre des mois de 2025 a un seuil plus bas que le Smic actuel. Le maire vérifie aussi la salubrité du logement.', 'Each month uses the minimum wage in force on the 1st: an application covering months of 2025 has a lower threshold than today’s minimum wage. The mayor also checks the home is fit to live in.')}
+        note={T(lang, 'Prestations familiales, RSA, ASPA, ASS, ATA et AER ne comptent pas. Chaque mois prend le Smic en vigueur le 1er du mois : un dépôt qui couvre des mois de 2025 a un seuil plus bas que le Smic actuel. Le maire vérifie aussi la salubrité du logement.', 'Family benefits, RSA, ASPA, ASS, ATA and AER do not count. Each month uses the minimum wage in force on the 1st: an application covering months of 2025 has a lower threshold than today’s minimum wage. The mayor also checks the home is fit to live in.')}
         methodHref={methodHref} methodLabel={T(lang, 'Calcul et sources', 'Calculation and sources')} />}
     />
   );

@@ -102,5 +102,6 @@ export function orienter(r: Reponses): Orientation {
   }
   if (r.motif !== 'etudes' && r.motif !== 'soins' && r.motif !== 'sans_titre') push('naturalisation', P.naturalisation.residence_ans);
   if (r.motif === 'etudes') push('naturalisation', P.naturalisation.reduite_ans);
-  return { principal, alternatives, suite, ...(r.nationalite === 'algerien' ? { horsTitre: 'algerien' as const } : {}) };
+  const alts = alternatives.filter((x, i, arr) => x.titre !== principal.titre && arr.findIndex((y) => y.titre === x.titre) === i);
+  return { principal, alternatives: alts, suite, ...(r.nationalite === 'algerien' ? { horsTitre: 'algerien' as const } : {}) };
 }

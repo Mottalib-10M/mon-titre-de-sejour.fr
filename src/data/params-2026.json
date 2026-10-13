@@ -86,7 +86,9 @@
    "nationalite": 55,
    "visa_regularisation": 200,
    "vls_ts": 200
-  }
+  },
+  "titre_voyage_refugie": 45,
+  "_source_titre_voyage": "sp_F15401"
  },
  "titres": [
   {
@@ -226,7 +228,8 @@
    "label": {
     "fr": "Carte « jeune au pair »",
     "en": "Au pair permit"
-   }
+   },
+   "implicite_jours": 90
   },
   {
    "id": "saisonnier",
@@ -324,7 +327,8 @@
    "label": {
     "fr": "Étranger malade (soins en France)",
     "en": "Foreign national needing medical care in France"
-   }
+   },
+   "implicite_mois": 4
   },
   {
    "id": "retraite",
@@ -522,7 +526,8 @@
   "langue": "B1",
   "_source_ue": "sp_F17359",
   "absence_consecutive_mois": 6,
-  "absences_total_mois": 10
+  "absences_total_mois": 10,
+  "parent_ans": 3
  },
  "pluriannuelle": {
   "_source": "sp_F35799",

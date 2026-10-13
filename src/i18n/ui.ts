@@ -4,7 +4,7 @@ const fr = {
   skipToContent: 'Aller au contenu', mainNav: 'Navigation principale', breadcrumbLabel: 'Fil d’Ariane', breadcrumbHome: 'Accueil', menuOpen: 'Ouvrir le menu',
   faqTitle: 'Questions fréquentes', relatedCalculators: 'Pages et simulateurs liés', sourcesTitle: 'Sources officielles', writtenBy: 'Rédigé par',
   asOf: 'Règles en vigueur', lastUpdated: 'vérifiées le', footerValidated: 'Fondé sur le CESEDA, le Code civil, la loi de finances pour 2026 et les fiches de Service-Public.fr relues le 13 octobre 2026', footerBrowser: 'Calcul dans votre navigateur · aucune donnée transmise · gratuit, sans inscription',
-  footerDisclaimer: 'Information, pas un conseil juridique. Site indépendant de l’administration, édité par Radif Partners : il n’est lié ni au ministère de l’Intérieur, ni aux préfectures, ni à l’OFII, ni à l’ANEF, ni à un cabinet d’avocats. Seule la préfecture (ou le ministère pour la nationalité) décide de votre dossier. Nous ne collectons aucune coordonnée et ne vendons aucun service.', footerPopular: '', notFound: 'Cette page n’existe pas.',
+  footerDisclaimer: 'Information, pas un conseil juridique. Site indépendant de l’administration, édité par Radif Partners : il n’est lié ni au ministère de l’Intérieur, ni aux préfectures, ni à l’OFII, ni à l’ANEF, ni à un cabinet d’avocats. Les résultats ne remplacent pas l’examen de votre dossier : seule la préfecture (ou le ministère pour la nationalité) décide. Nous ne collectons aucune coordonnée et ne vendons aucun service.', footerPopular: '', notFound: 'Cette page n’existe pas.',
   readMore: 'Lire la suite',
 };
 const en: typeof fr = {
