@@ -1,0 +1,1114 @@
+{
+ "_lisezmoi": "Paramètres légaux du site (RECETTE §4). Chaque valeur relue sur la source citée le 2026-10-13 (service-public.gouv.fr, insee.fr). Légifrance répond 403 aux robots : les articles sont cités tels que les fiches Service-Public les référencent. Aucun délai de préfecture : aucune source officielle ne les publie.",
+ "year": 2026,
+ "retrieved_at": "2026-10-13",
+ "valid_from": "2026-05-01",
+ "valid_to": "2026-12-31",
+ "smic": {
+  "_source": "insee_smic",
+  "historique": [
+   {
+    "depuis": "2023-05-01",
+    "horaire": 11.52,
+    "mensuel": 1747.2
+   },
+   {
+    "depuis": "2024-01-01",
+    "horaire": 11.65,
+    "mensuel": 1766.92
+   },
+   {
+    "depuis": "2024-11-01",
+    "horaire": 11.88,
+    "mensuel": 1801.8
+   },
+   {
+    "depuis": "2026-01-01",
+    "horaire": 12.02,
+    "mensuel": 1823.03
+   },
+   {
+    "depuis": "2026-06-01",
+    "horaire": 12.31,
+    "mensuel": 1867.02
+   }
+  ],
+  "annuel_brut": 22404.2,
+  "mensuel_net": 1477.93,
+  "annuel_net": 17735.19,
+  "_source_montants": "sp_F2300"
+ },
+ "tarifs": {
+  "_source": "sp_A18881",
+  "_base": "lf2026_art128",
+  "en_vigueur": "2026-05-01",
+  "droit_timbre": 50,
+  "normal": {
+   "premiere": 350,
+   "renouvellement": 250,
+   "duplicata": 350,
+   "taxe_premiere": 300,
+   "taxe_renouvellement": 200
+  },
+  "minore": {
+   "premiere": 150,
+   "renouvellement": 100,
+   "duplicata": 150,
+   "taxe_premiere": 100,
+   "taxe_renouvellement": 50
+  },
+  "timbre_seul": {
+   "premiere": 50,
+   "renouvellement": 50,
+   "duplicata": 50
+  },
+  "gratuit": {
+   "premiere": 0,
+   "renouvellement": 0,
+   "duplicata": 0
+  },
+  "vls_ts": {
+   "normal": 300,
+   "minore": 100
+  },
+  "visa_regularisation": 300,
+  "visa_regularisation_non_remboursable": 100,
+  "retard_renouvellement": 180,
+  "_source_retard": "sp_F15898",
+  "aps": 100,
+  "nationalite": 255,
+  "nationalite_guyane": 127.5,
+  "anciens": {
+   "premiere": 225,
+   "renouvellement": 225,
+   "premiere_minore": 75,
+   "renouvellement_minore": 75,
+   "nationalite": 55,
+   "visa_regularisation": 200,
+   "vls_ts": 200
+  }
+ },
+ "titres": [
+  {
+   "id": "salarie",
+   "fiche": "sp_F15898",
+   "tarif": "normal",
+   "vls": "normal",
+   "implicite_mois": 4,
+   "label": {
+    "fr": "Carte de séjour « salarié »",
+    "en": "“Salarié” (employee) residence permit"
+   }
+  },
+  {
+   "id": "travailleur_temporaire",
+   "fiche": "sp_F15898",
+   "tarif": "normal",
+   "vls": "normal",
+   "implicite_mois": 4,
+   "label": {
+    "fr": "Carte de séjour « travailleur temporaire »",
+    "en": "“Travailleur temporaire” (temporary worker) permit"
+   }
+  },
+  {
+   "id": "talent_salarie",
+   "fiche": "sp_F16922",
+   "tarif": "normal",
+   "vls": "normal",
+   "implicite_mois": 4,
+   "label": {
+    "fr": "Carte « talent » salarié qualifié ou entreprise innovante",
+    "en": "Talent card: skilled employee or innovative company"
+   }
+  },
+  {
+   "id": "carte_bleue",
+   "fiche": "sp_F16922",
+   "tarif": "normal",
+   "vls": "normal",
+   "implicite_jours": 90,
+   "label": {
+    "fr": "Carte « talent – carte bleue européenne »",
+    "en": "Talent card: EU Blue Card"
+   }
+  },
+  {
+   "id": "talent_famille",
+   "fiche": "sp_F35792",
+   "tarif": "normal",
+   "vls": "normal",
+   "implicite_mois": 4,
+   "label": {
+    "fr": "Carte « talent – famille »",
+    "en": "Talent card: family member"
+   }
+  },
+  {
+   "id": "ict",
+   "fiche": "sp_F33952",
+   "tarif": "normal",
+   "vls": "normal",
+   "implicite_jours": 90,
+   "label": {
+    "fr": "Carte « salarié détaché ICT »",
+    "en": "Intra-corporate transferee (ICT) permit"
+   }
+  },
+  {
+   "id": "entrepreneur",
+   "fiche": "sp_F35795",
+   "tarif": "normal",
+   "vls": "normal",
+   "label": {
+    "fr": "Carte « entrepreneur / profession libérale »",
+    "en": "Self-employed / liberal profession permit"
+   }
+  },
+  {
+   "id": "visiteur",
+   "fiche": "sp_F302",
+   "tarif": "normal",
+   "vls": "normal",
+   "implicite_mois": 4,
+   "label": {
+    "fr": "Carte « visiteur »",
+    "en": "“Visiteur” (visitor) permit"
+   }
+  },
+  {
+   "id": "etudiant",
+   "fiche": "sp_F2231",
+   "tarif": "minore",
+   "vls": "minore",
+   "implicite_jours": 90,
+   "label": {
+    "fr": "Carte « étudiant »",
+    "en": "Student residence permit"
+   }
+  },
+  {
+   "id": "etudiant_mobilite",
+   "fiche": "sp_F35796",
+   "tarif": "minore",
+   "vls": "minore",
+   "implicite_jours": 90,
+   "label": {
+    "fr": "Carte « étudiant – programme de mobilité »",
+    "en": "Student permit: mobility programme"
+   }
+  },
+  {
+   "id": "rece",
+   "fiche": "sp_F17319",
+   "tarif": "minore",
+   "vls": "minore",
+   "label": {
+    "fr": "Carte « recherche d'emploi ou création d'entreprise »",
+    "en": "Job-search or business-creation permit (RECE)"
+   }
+  },
+  {
+   "id": "stagiaire",
+   "fiche": "sp_F17312",
+   "tarif": "minore",
+   "vls": "minore",
+   "label": {
+    "fr": "Carte « stagiaire »",
+    "en": "Trainee (intern) permit"
+   }
+  },
+  {
+   "id": "au_pair",
+   "fiche": "sp_F15813",
+   "tarif": "minore",
+   "vls": "minore",
+   "label": {
+    "fr": "Carte « jeune au pair »",
+    "en": "Au pair permit"
+   }
+  },
+  {
+   "id": "saisonnier",
+   "fiche": "sp_F21516",
+   "tarif": "minore",
+   "vls": "minore",
+   "implicite_mois": 3,
+   "label": {
+    "fr": "Carte « travailleur saisonnier »",
+    "en": "Seasonal worker permit"
+   }
+  },
+  {
+   "id": "vpf_conjoint",
+   "fiche": "sp_F2209",
+   "tarif": "normal",
+   "vls": "normal",
+   "implicite_mois": 4,
+   "label": {
+    "fr": "Vie privée et familiale : conjoint de Français",
+    "en": "Private and family life: spouse of a French national"
+   }
+  },
+  {
+   "id": "vpf_parent",
+   "fiche": "sp_F2209",
+   "tarif": "normal",
+   "vls": "normal",
+   "implicite_mois": 4,
+   "label": {
+    "fr": "Vie privée et familiale : parent d'enfant français",
+    "en": "Private and family life: parent of a French child"
+   }
+  },
+  {
+   "id": "vpf_liens",
+   "fiche": "sp_F2209",
+   "tarif": "normal",
+   "vls": "normal",
+   "implicite_mois": 4,
+   "label": {
+    "fr": "Vie privée et familiale : liens personnels et familiaux",
+    "en": "Private and family life: personal and family ties"
+   }
+  },
+  {
+   "id": "vpf_jeune_majeur",
+   "fiche": "sp_F2209",
+   "tarif": "minore",
+   "vls": "minore",
+   "implicite_mois": 4,
+   "label": {
+    "fr": "Vie privée et familiale : jeune majeur entré par regroupement familial",
+    "en": "Private and family life: young adult who came through family reunification"
+   }
+  },
+  {
+   "id": "vpf_rente",
+   "fiche": "sp_F2209",
+   "tarif": "minore",
+   "vls": "minore",
+   "implicite_mois": 4,
+   "label": {
+    "fr": "Vie privée et familiale : rente d'accident du travail",
+    "en": "Private and family life: work-accident pension"
+   }
+  },
+  {
+   "id": "regroupement",
+   "fiche": "sp_F11166",
+   "tarif": "minore",
+   "vls": "minore",
+   "label": {
+    "fr": "Famille venue par regroupement familial",
+    "en": "Family member admitted through family reunification"
+   }
+  },
+  {
+   "id": "admission_exceptionnelle",
+   "fiche": "sp_F2209",
+   "tarif": "normal",
+   "vls": null,
+   "implicite_mois": 4,
+   "regularisation": true,
+   "label": {
+    "fr": "Admission exceptionnelle (motifs humanitaires ou exceptionnels)",
+    "en": "Exceptional admission (humanitarian or exceptional grounds)"
+   }
+  },
+  {
+   "id": "etranger_malade",
+   "fiche": "sp_F17164",
+   "tarif": "timbre_seul",
+   "vls": null,
+   "label": {
+    "fr": "Étranger malade (soins en France)",
+    "en": "Foreign national needing medical care in France"
+   }
+  },
+  {
+   "id": "retraite",
+   "fiche": "sp_F2710",
+   "tarif": "timbre_seul",
+   "vls": null,
+   "label": {
+    "fr": "Carte « retraité » ou conjoint de retraité",
+    "en": "Retiree (or retiree's spouse) card"
+   }
+  },
+  {
+   "id": "famille_refugie",
+   "fiche": "sp_F15401",
+   "tarif": "timbre_seul",
+   "vls": null,
+   "label": {
+    "fr": "Famille d'un réfugié ou d'un protégé subsidiaire",
+    "en": "Family of a refugee or subsidiary-protection holder"
+   }
+  },
+  {
+   "id": "refugie",
+   "fiche": "sp_F15401",
+   "tarif": "gratuit",
+   "vls": null,
+   "label": {
+    "fr": "Réfugié statutaire (carte de résident)",
+    "en": "Recognised refugee (resident card)"
+   }
+  },
+  {
+   "id": "resident",
+   "fiche": "sp_F2208",
+   "tarif": "normal",
+   "vls": null,
+   "implicite_mois": 4,
+   "label": {
+    "fr": "Carte de résident de 10 ans",
+    "en": "10-year resident card"
+   }
+  },
+  {
+   "id": "resident_ue",
+   "fiche": "sp_F17359",
+   "tarif": "normal",
+   "vls": null,
+   "implicite_mois": 4,
+   "label": {
+    "fr": "Carte de résident de longue durée – UE",
+    "en": "EU long-term resident card"
+   }
+  },
+  {
+   "id": "resident_permanent",
+   "fiche": "sp_F11201",
+   "tarif": "normal",
+   "vls": null,
+   "label": {
+    "fr": "Carte de résident permanent",
+    "en": "Permanent resident card"
+   }
+  }
+ ],
+ "renouvellement": {
+  "_source": "sp_F2209",
+  "au_plus_tot_mois": 4,
+  "au_plus_tard_mois": 2,
+  "recepisse_mois": 3,
+  "_source_recepisse": "sp_F15763",
+  "vls_ts_validation_mois": 3,
+  "_source_vls": "sp_F16162"
+ },
+ "regroupement": {
+  "_source": "sp_F11166",
+  "_base": "ceseda_r434",
+  "sejour_min_mois": 18,
+  "periode_mois": 12,
+  "coefficients": [
+   {
+    "min": 2,
+    "max": 3,
+    "coef": 1.0
+   },
+   {
+    "min": 4,
+    "max": 5,
+    "coef": 1.1
+   },
+   {
+    "min": 6,
+    "max": 99,
+    "coef": 1.2
+   }
+  ],
+  "surface": {
+   "base": {
+    "A": 22,
+    "B": 24,
+    "C": 28
+   },
+   "par_personne": 10,
+   "au_dela_8": 5
+  },
+  "implicite_mois": 6,
+  "dispense_age": 65,
+  "dispense_residence_ans": 25,
+  "dispense_mariage_ans": 10
+ },
+ "talent": {
+  "_source": "sp_F16922",
+  "_base": "arrete_salaire_ref",
+  "salaire_ref": 39582,
+  "cbe_coef": 1.5,
+  "cbe": 59373,
+  "praticien": 41386.48,
+  "mandataire_smic": 3,
+  "mandataire": 67212.6,
+  "artiste_mensuel": 1306.91,
+  "createur_investissement": 30000,
+  "investisseur": 300000,
+  "chercheur_mensuel": 2200,
+  "duree_max_ans": 4,
+  "cbe_contrat_min_mois": 6,
+  "salarie_contrat_min_mois": 3
+ },
+ "rece": {
+  "_source": "sp_F17319",
+  "seuil_mensuel": 2800.53,
+  "smic_coef": 1.5
+ },
+ "etudiant": {
+  "_source": "sp_F2231",
+  "ressources_mensuelles": 877.5
+ },
+ "visiteur": {
+  "_source": "sp_F302",
+  "ressources_mensuelles_net": 1477.93,
+  "ressources_annuelles_net": 17735.19
+ },
+ "taxe_employeur": {
+  "_source": "sp_F2728",
+  "_base": "ceseda_l436_10",
+  "court": [
+   {
+    "jusqua": 1867.02,
+    "montant": 74
+   },
+   {
+    "jusqua": 2800.53,
+    "montant": 210
+   },
+   {
+    "jusqua": null,
+    "montant": 300
+   }
+  ],
+  "long_taux": 0.55,
+  "long_plafond_salaire": 4667.54,
+  "long_plafond": 2567.15,
+  "saisonnier_par_mois": 50,
+  "jeune_pro": 72
+ },
+ "naturalisation": {
+  "_source": "sp_F2213",
+  "_base": "cciv_21_14",
+  "residence_ans": 5,
+  "reduite_ans": 2,
+  "age_min": 18,
+  "depot_age": 17,
+  "delai_mois": 18,
+  "delai_10ans_mois": 12,
+  "prolongation_mois": 3,
+  "langue": "B2",
+  "examen_questions": 40,
+  "examen_seuil": 32,
+  "_source_examen": "sp_F39426"
+ },
+ "mariage": {
+  "_source": "sp_F2726",
+  "_base": "cciv_21_1",
+  "duree_ans": 4,
+  "duree_longue_ans": 5,
+  "residence_continue_ans": 3,
+  "refus_ans": 1,
+  "refus_opposition_ans": 2
+ },
+ "resident": {
+  "_source": "sp_F2208",
+  "residence_ans": 5,
+  "conjoint_francais_ans": 3,
+  "conjoint_tunisien_ans": 1,
+  "regroupement_ans": 3,
+  "ps_apatride_ans": 4,
+  "langue": "B1",
+  "_source_ue": "sp_F17359",
+  "absence_consecutive_mois": 6,
+  "absences_total_mois": 10
+ },
+ "pluriannuelle": {
+  "_source": "sp_F35799",
+  "apres_ans": 1,
+  "langue": "A2",
+  "age_exemption": 65,
+  "examen_questions": 40,
+  "examen_seuil": 32,
+  "_source_examen": "sp_F39530"
+ },
+ "sources": {
+  "sp_F11166": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F11166",
+   "checked": "2026-06-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F11166 « Regroupement familial » (vérifiée le 1 juin 2026)",
+    "en": "Service-Public.fr, page F11166 “Regroupement familial” (checked 1 June 2026, in French)"
+   }
+  },
+  "sp_F11168": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F11168",
+   "checked": "2024-05-21",
+   "label": {
+    "fr": "Service-Public.fr, fiche F11168 « Le regroupement familial concerne-t-il toutes les familles étrangères ? » (vérifiée le 21 mai 2024)",
+    "en": "Service-Public.fr, page F11168 “Le regroupement familial concerne-t-il toutes les familles étrangères ?” (checked 21 May 2024, in French)"
+   }
+  },
+  "sp_F11201": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F11201",
+   "checked": "2026-05-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F11201 « Carte de résident permanent d'un étranger en France » (vérifiée le 1 mai 2026)",
+    "en": "Service-Public.fr, page F11201 “Carte de résident permanent d'un étranger en France” (checked 1 May 2026, in French)"
+   }
+  },
+  "sp_F11926": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F11926",
+   "checked": "2026-01-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F11926 « Nationalité française : comment justifier de son niveau en français ? » (vérifiée le 1 janvier 2026)",
+    "en": "Service-Public.fr, page F11926 “Nationalité française : comment justifier de son niveau en français ?” (checked 1 January 2026, in French)"
+   }
+  },
+  "sp_F15401": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F15401",
+   "checked": "2026-07-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F15401 « Réfugié : titre de séjour, document de voyage et accompagnement » (vérifiée le 1 juillet 2026)",
+    "en": "Service-Public.fr, page F15401 “Réfugié : titre de séjour, document de voyage et accompagnement” (checked 1 July 2026, in French)"
+   }
+  },
+  "sp_F15763": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F15763",
+   "checked": "2023-11-17",
+   "label": {
+    "fr": "Service-Public.fr, fiche F15763 « Qu'est-ce qu'un récépissé de demande de titre de séjour ? » (vérifiée le 17 novembre 2023)",
+    "en": "Service-Public.fr, page F15763 “Qu'est-ce qu'un récépissé de demande de titre de séjour ?” (checked 17 November 2023, in French)"
+   }
+  },
+  "sp_F15813": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F15813",
+   "checked": "2026-05-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F15813 « Carte de séjour temporaire - Jeune au pair » (vérifiée le 1 mai 2026)",
+    "en": "Service-Public.fr, page F15813 “Carte de séjour temporaire - Jeune au pair” (checked 1 May 2026, in French)"
+   }
+  },
+  "sp_F15868": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F15868",
+   "checked": "2026-07-09",
+   "label": {
+    "fr": "Service-Public.fr, fiche F15868 « Qu'est-ce que la cérémonie d'accueil dans la citoyenneté française ? » (vérifiée le 9 juillet 2026)",
+    "en": "Service-Public.fr, page F15868 “Qu'est-ce que la cérémonie d'accueil dans la citoyenneté française ?” (checked 9 July 2026, in French)"
+   }
+  },
+  "sp_F15898": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F15898",
+   "checked": "2026-05-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F15898 « Travail d'un étranger en France : carte de séjour - salarié/travailleur temporaire » (vérifiée le 1 mai 2026)",
+    "en": "Service-Public.fr, page F15898 “Travail d'un étranger en France : carte de séjour - salarié/travailleur temporaire” (checked 1 May 2026, in French)"
+   }
+  },
+  "sp_F16053": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F16053",
+   "checked": "2025-06-03",
+   "label": {
+    "fr": "Service-Public.fr, fiche F16053 « Qu'est-ce que la régularisation d'un étranger par le travail ? » (vérifiée le 3 juin 2025)",
+    "en": "Service-Public.fr, page F16053 “Qu'est-ce que la régularisation d'un étranger par le travail ?” (checked 3 June 2025, in French)"
+   }
+  },
+  "sp_F16162": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F16162",
+   "checked": "2026-10-09",
+   "label": {
+    "fr": "Service-Public.fr, fiche F16162 « Visa de long séjour (séjour de plus de 3 mois à 1 an) » (vérifiée le 9 octobre 2026)",
+    "en": "Service-Public.fr, page F16162 “Visa de long séjour (séjour de plus de 3 mois à 1 an)” (checked 9 October 2026, in French)"
+   }
+  },
+  "sp_F16922": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F16922",
+   "checked": "2026-06-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F16922 « Carte talent : carte de séjour pluriannuelle d'un étranger en France » (vérifiée le 1 juin 2026)",
+    "en": "Service-Public.fr, page F16922 “Carte talent : carte de séjour pluriannuelle d'un étranger en France” (checked 1 June 2026, in French)"
+   }
+  },
+  "sp_F17048": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F17048",
+   "checked": "2026-06-26",
+   "label": {
+    "fr": "Service-Public.fr, fiche F17048 « Qu'est-ce que le contrat d'intégration républicaine (CIR) ? » (vérifiée le 26 juin 2026)",
+    "en": "Service-Public.fr, page F17048 “Qu'est-ce que le contrat d'intégration républicaine (CIR) ?” (checked 26 June 2026, in French)"
+   }
+  },
+  "sp_F17146": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F17146",
+   "checked": "2025-03-12",
+   "label": {
+    "fr": "Service-Public.fr, fiche F17146 « Qu'est-ce que la régularisation pour motif humanitaire ou exceptionnel d'un étranger en situation irrégulière ? » (vérifiée le 12 mars 2025)",
+    "en": "Service-Public.fr, page F17146 “Qu'est-ce que la régularisation pour motif humanitaire ou exceptionnel d'un étranger en situation irrégulière ?” (checked 12 March 2025, in French)"
+   }
+  },
+  "sp_F17164": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F17164",
+   "checked": "2026-05-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F17164 « Comment un étranger habitant en France et gravement malade peut-il obtenir un titre de séjour ? » (vérifiée le 1 mai 2026)",
+    "en": "Service-Public.fr, page F17164 “Comment un étranger habitant en France et gravement malade peut-il obtenir un titre de séjour ?” (checked 1 May 2026, in French)"
+   }
+  },
+  "sp_F17312": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F17312",
+   "checked": "2026-06-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F17312 « Stagiaire étranger en France : visa de long séjour ou carte de séjour » (vérifiée le 1 juin 2026)",
+    "en": "Service-Public.fr, page F17312 “Stagiaire étranger en France : visa de long séjour ou carte de séjour” (checked 1 June 2026, in French)"
+   }
+  },
+  "sp_F17319": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F17319",
+   "checked": "2026-06-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F17319 « Carte de séjour ou VLS-TS - Recherche d'emploi/création d'entreprise » (vérifiée le 1 juin 2026)",
+    "en": "Service-Public.fr, page F17319 “Carte de séjour ou VLS-TS - Recherche d'emploi/création d'entreprise” (checked 1 June 2026, in French)"
+   }
+  },
+  "sp_F17359": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F17359",
+   "checked": "2026-06-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F17359 « Carte de résident de longue durée-UE (étranger en France depuis 5 ans) » (vérifiée le 1 juin 2026)",
+    "en": "Service-Public.fr, page F17359 “Carte de résident de longue durée-UE (étranger en France depuis 5 ans)” (checked 1 June 2026, in French)"
+   }
+  },
+  "sp_F17450": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F17450",
+   "checked": "2026-08-13",
+   "label": {
+    "fr": "Service-Public.fr, fiche F17450 « Un salarié non européen qui s'installe en France doit-il connaître le français ? » (vérifiée le 13 août 2026)",
+    "en": "Service-Public.fr, page F17450 “Un salarié non européen qui s'installe en France doit-il connaître le français ?” (checked 13 August 2026, in French)"
+   }
+  },
+  "sp_F1764": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1764",
+   "checked": "2026-08-04",
+   "label": {
+    "fr": "Service-Public.fr, fiche F1764 « L'époux étranger d'un Français peut-il séjourner en France ? » (vérifiée le 4 août 2026)",
+    "en": "Service-Public.fr, page F1764 “L'époux étranger d'un Français peut-il séjourner en France ?” (checked 4 August 2026, in French)"
+   }
+  },
+  "sp_F21516": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F21516",
+   "checked": "2026-05-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F21516 « Étranger en France : carte de séjour pluriannuelle - travailleur saisonnier » (vérifiée le 1 mai 2026)",
+    "en": "Service-Public.fr, page F21516 “Étranger en France : carte de séjour pluriannuelle - travailleur saisonnier” (checked 1 May 2026, in French)"
+   }
+  },
+  "sp_F21921": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F21921",
+   "checked": "2025-10-12",
+   "label": {
+    "fr": "Service-Public.fr, fiche F21921 « Un étranger a-t-il besoin d'un visa pour venir en France ? » (vérifiée le 12 octobre 2025)",
+    "en": "Service-Public.fr, page F21921 “Un étranger a-t-il besoin d'un visa pour venir en France ?” (checked 12 October 2025, in French)"
+   }
+  },
+  "sp_F2208": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2208",
+   "checked": "2026-07-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F2208 « Carte de résident de 10 ans d'un étranger en France » (vérifiée le 1 juillet 2026)",
+    "en": "Service-Public.fr, page F2208 “Carte de résident de 10 ans d'un étranger en France” (checked 1 July 2026, in French)"
+   }
+  },
+  "sp_F2209": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2209",
+   "checked": "2026-05-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F2209 « Carte de séjour \"vie privée et familiale\" d'un étranger en France » (vérifiée le 1 mai 2026)",
+    "en": "Service-Public.fr, page F2209 “Carte de séjour \"vie privée et familiale\" d'un étranger en France” (checked 1 May 2026, in French)"
+   }
+  },
+  "sp_F2213": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2213",
+   "checked": "2026-07-16",
+   "label": {
+    "fr": "Service-Public.fr, fiche F2213 « Naturalisation française par décret » (vérifiée le 16 juillet 2026)",
+    "en": "Service-Public.fr, page F2213 “Naturalisation française par décret” (checked 16 July 2026, in French)"
+   }
+  },
+  "sp_F2214": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2214",
+   "checked": "2026-07-16",
+   "label": {
+    "fr": "Service-Public.fr, fiche F2214 « Réintégration dans la nationalité française par décret » (vérifiée le 16 juillet 2026)",
+    "en": "Service-Public.fr, page F2214 “Réintégration dans la nationalité française par décret” (checked 16 July 2026, in French)"
+   }
+  },
+  "sp_F2215": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2215",
+   "checked": "2026-08-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F2215 « Certificat de résidence d'1 an pour Algérien » (vérifiée le 1 août 2026)",
+    "en": "Service-Public.fr, page F2215 “Certificat de résidence d'1 an pour Algérien” (checked 1 August 2026, in French)"
+   }
+  },
+  "sp_F2229": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2229",
+   "checked": "2026-06-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F2229 « Étudiant étranger : comment travailler en France après ses études ? » (vérifiée le 1 juin 2026)",
+    "en": "Service-Public.fr, page F2229 “Étudiant étranger : comment travailler en France après ses études ?” (checked 1 June 2026, in French)"
+   }
+  },
+  "sp_F2231": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2231",
+   "checked": "2026-08-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F2231 « Étudiant étranger en France : visa de long séjour ou titre de séjour » (vérifiée le 1 août 2026)",
+    "en": "Service-Public.fr, page F2231 “Étudiant étranger en France : visa de long séjour ou titre de séjour” (checked 1 August 2026, in French)"
+   }
+  },
+  "sp_F2257": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2257",
+   "checked": "2024-10-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F2257 « Certificat de résidence de 10 ans - Personne de nationalité algérienne » (vérifiée le 1 octobre 2024)",
+    "en": "Service-Public.fr, page F2257 “Certificat de résidence de 10 ans - Personne de nationalité algérienne” (checked 1 October 2024, in French)"
+   }
+  },
+  "sp_F2300": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2300",
+   "checked": "2026-06-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F2300 « Smic (salaire minimum interprofessionnel de croissance) » (vérifiée le 1 juin 2026)",
+    "en": "Service-Public.fr, page F2300 “Smic (salaire minimum interprofessionnel de croissance)” (checked 1 June 2026, in French)"
+   }
+  },
+  "sp_F2651": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2651",
+   "checked": "2026-04-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F2651 « Séjour de longue durée d'un Européen en France » (vérifiée le 1 avril 2026)",
+    "en": "Service-Public.fr, page F2651 “Séjour de longue durée d'un Européen en France” (checked 1 April 2026, in French)"
+   }
+  },
+  "sp_F2689": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2689",
+   "checked": "2026-07-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F2689 « Protection subsidiaire : statut, titre de séjour et titre de voyage » (vérifiée le 1 juillet 2026)",
+    "en": "Service-Public.fr, page F2689 “Protection subsidiaire : statut, titre de séjour et titre de voyage” (checked 1 July 2026, in French)"
+   }
+  },
+  "sp_F2710": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2710",
+   "checked": "2026-05-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F2710 « Carte de séjour pour étranger retraité ou conjoint de retraité » (vérifiée le 1 mai 2026)",
+    "en": "Service-Public.fr, page F2710 “Carte de séjour pour étranger retraité ou conjoint de retraité” (checked 1 May 2026, in French)"
+   }
+  },
+  "sp_F2713": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2713",
+   "checked": "2025-10-07",
+   "label": {
+    "fr": "Service-Public.fr, fiche F2713 « Un étudiant non européen peut-il travailler en France ? » (vérifiée le 7 octobre 2025)",
+    "en": "Service-Public.fr, page F2713 “Un étudiant non européen peut-il travailler en France ?” (checked 7 October 2025, in French)"
+   }
+  },
+  "sp_F2726": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2726",
+   "checked": "2026-05-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F2726 « Déclaration de nationalité française par mariage » (vérifiée le 1 mai 2026)",
+    "en": "Service-Public.fr, page F2726 “Déclaration de nationalité française par mariage” (checked 1 May 2026, in French)"
+   }
+  },
+  "sp_F2728": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2728",
+   "checked": "2026-06-18",
+   "label": {
+    "fr": "Service-Public.fr, fiche F2728 « Autorisation de travail d'un salarié étranger en France » (vérifiée le 18 juin 2026)",
+    "en": "Service-Public.fr, page F2728 “Autorisation de travail d'un salarié étranger en France” (checked 18 June 2026, in French)"
+   }
+  },
+  "sp_F2733": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2733",
+   "checked": "2021-04-02",
+   "label": {
+    "fr": "Service-Public.fr, fiche F2733 « Autorisation de travail d'un Algérien salarié en France » (vérifiée le 2 avril 2021)",
+    "en": "Service-Public.fr, page F2733 “Autorisation de travail d'un Algérien salarié en France” (checked 2 April 2021, in French)"
+   }
+  },
+  "sp_F302": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F302",
+   "checked": "2026-06-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F302 « Carte de séjour temporaire \"visiteur\" d'un étranger en France » (vérifiée le 1 juin 2026)",
+    "en": "Service-Public.fr, page F302 “Carte de séjour temporaire \"visiteur\" d'un étranger en France” (checked 1 June 2026, in French)"
+   }
+  },
+  "sp_F3100": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F3100",
+   "checked": "2026-06-18",
+   "label": {
+    "fr": "Service-Public.fr, fiche F3100 « Salarié étranger : comment sont délivrées les autorisations de travail ? » (vérifiée le 18 juin 2026)",
+    "en": "Service-Public.fr, page F3100 “Salarié étranger : comment sont délivrées les autorisations de travail ?” (checked 18 June 2026, in French)"
+   }
+  },
+  "sp_F31039": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F31039",
+   "checked": "2025-10-21",
+   "label": {
+    "fr": "Service-Public.fr, fiche F31039 « Quels liens privés et familiaux peut invoquer un étranger pour être admis au séjour en France ? » (vérifiée le 21 octobre 2025)",
+    "en": "Service-Public.fr, page F31039 “Quels liens privés et familiaux peut invoquer un étranger pour être admis au séjour en France ?” (checked 21 October 2025, in French)"
+   }
+  },
+  "sp_F32952": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F32952",
+   "checked": "2026-05-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F32952 « Comment acheter un timbre fiscal pour une demande de nationalité française ? » (vérifiée le 1 mai 2026)",
+    "en": "Service-Public.fr, page F32952 “Comment acheter un timbre fiscal pour une demande de nationalité française ?” (checked 1 May 2026, in French)"
+   }
+  },
+  "sp_F33052": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F33052",
+   "checked": "2025-08-05",
+   "label": {
+    "fr": "Service-Public.fr, fiche F33052 « Demande de carte de séjour : quel justificatif de domicile ? » (vérifiée le 5 août 2025)",
+    "en": "Service-Public.fr, page F33052 “Demande de carte de séjour : quel justificatif de domicile ?” (checked 5 August 2025, in French)"
+   }
+  },
+  "sp_F33071": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F33071",
+   "checked": "2024-04-19",
+   "label": {
+    "fr": "Service-Public.fr, fiche F33071 « Étranger en France : comment acheter un timbre fiscal ? » (vérifiée le 19 avril 2024)",
+    "en": "Service-Public.fr, page F33071 “Étranger en France : comment acheter un timbre fiscal ?” (checked 19 April 2024, in French)"
+   }
+  },
+  "sp_F33430": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F33430",
+   "checked": "2026-05-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F33430 « Déclaration de nationalité française de l'ascendant d'un Français » (vérifiée le 1 mai 2026)",
+    "en": "Service-Public.fr, page F33430 “Déclaration de nationalité française de l'ascendant d'un Français” (checked 1 May 2026, in French)"
+   }
+  },
+  "sp_F33952": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F33952",
+   "checked": "2026-06-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F33952 « Étranger en France : carte de séjour pluriannuelle - salarié détaché ICT » (vérifiée le 1 juin 2026)",
+    "en": "Service-Public.fr, page F33952 “Étranger en France : carte de séjour pluriannuelle - salarié détaché ICT” (checked 1 June 2026, in French)"
+   }
+  },
+  "sp_F34501": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34501",
+   "checked": "2026-02-10",
+   "label": {
+    "fr": "Service-Public.fr, fiche F34501 « Carte de résident et carte de séjour pluriannuelle : comment justifier de votre connaissance du français ? » (vérifiée le 10 février 2026)",
+    "en": "Service-Public.fr, page F34501 “Carte de résident et carte de séjour pluriannuelle : comment justifier de votre connaissance du français ?” (checked 10 February 2026, in French)"
+   }
+  },
+  "sp_F34746": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34746",
+   "checked": "2026-01-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F34746 « Naturalisation française : quels justificatifs de revenus et d'impôts ? » (vérifiée le 1 janvier 2026)",
+    "en": "Service-Public.fr, page F34746 “Naturalisation française : quels justificatifs de revenus et d'impôts ?” (checked 1 January 2026, in French)"
+   }
+  },
+  "sp_F34840": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34840",
+   "checked": "2025-09-19",
+   "label": {
+    "fr": "Service-Public.fr, fiche F34840 « L'autorisation provisoire de travail pour un étranger existe-elle encore ? » (vérifiée le 19 septembre 2025)",
+    "en": "Service-Public.fr, page F34840 “L'autorisation provisoire de travail pour un étranger existe-elle encore ?” (checked 19 September 2025, in French)"
+   }
+  },
+  "sp_F35158": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F35158",
+   "checked": "2026-04-22",
+   "label": {
+    "fr": "Service-Public.fr, fiche F35158 « Réunification familiale » (vérifiée le 22 avril 2026)",
+    "en": "Service-Public.fr, page F35158 “Réunification familiale” (checked 22 April 2026, in French)"
+   }
+  },
+  "sp_F35308": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F35308",
+   "checked": "2026-07-15",
+   "label": {
+    "fr": "Service-Public.fr, fiche F35308 « Procédure simplifiée \"famille accompagnante\" » (vérifiée le 15 juillet 2026)",
+    "en": "Service-Public.fr, page F35308 “Procédure simplifiée \"famille accompagnante\"” (checked 15 July 2026, in French)"
+   }
+  },
+  "sp_F35792": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F35792",
+   "checked": "2026-05-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F35792 « Carte de séjour pluriannuelle \"talent-famille\" » (vérifiée le 1 mai 2026)",
+    "en": "Service-Public.fr, page F35792 “Carte de séjour pluriannuelle \"talent-famille\"” (checked 1 May 2026, in French)"
+   }
+  },
+  "sp_F35795": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F35795",
+   "checked": "2026-06-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F35795 « Carte de séjour \"entrepreneur/profession libérale\" d'un étranger en France » (vérifiée le 1 juin 2026)",
+    "en": "Service-Public.fr, page F35795 “Carte de séjour \"entrepreneur/profession libérale\" d'un étranger en France” (checked 1 June 2026, in French)"
+   }
+  },
+  "sp_F35796": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F35796",
+   "checked": "2026-08-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F35796 « Carte de séjour étudiant \"programme de mobilité\" » (vérifiée le 1 août 2026)",
+    "en": "Service-Public.fr, page F35796 “Carte de séjour étudiant \"programme de mobilité\"” (checked 1 August 2026, in French)"
+   }
+  },
+  "sp_F35799": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F35799",
+   "checked": "2026-05-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F35799 « Carte de séjour pluriannuelle » (vérifiée le 1 mai 2026)",
+    "en": "Service-Public.fr, page F35799 “Carte de séjour pluriannuelle” (checked 1 May 2026, in French)"
+   }
+  },
+  "sp_F36206": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F36206",
+   "checked": "2023-12-15",
+   "label": {
+    "fr": "Service-Public.fr, fiche F36206 « Qu'est-ce qu'une attestation de demande de carte de séjour ? » (vérifiée le 15 décembre 2023)",
+    "en": "Service-Public.fr, page F36206 “Qu'est-ce qu'une attestation de demande de carte de séjour ?” (checked 15 December 2023, in French)"
+   }
+  },
+  "sp_F38329": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F38329",
+   "checked": "2026-08-04",
+   "label": {
+    "fr": "Service-Public.fr, fiche F38329 « Qu'est-ce que le contrat d'engagement à respecter les principes de la République ? » (vérifiée le 4 août 2026)",
+    "en": "Service-Public.fr, page F38329 “Qu'est-ce que le contrat d'engagement à respecter les principes de la République ?” (checked 4 August 2026, in French)"
+   }
+  },
+  "sp_F39": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F39",
+   "checked": "2026-07-08",
+   "label": {
+    "fr": "Service-Public.fr, fiche F39 « Quels titres de séjour un ressortissant étranger doit-il avoir pour rester en France plus de 3 mois ? » (vérifiée le 8 juillet 2026)",
+    "en": "Service-Public.fr, page F39 “Quels titres de séjour un ressortissant étranger doit-il avoir pour rester en France plus de 3 mois ?” (checked 8 July 2026, in French)"
+   }
+  },
+  "sp_F39426": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F39426",
+   "checked": "2026-07-16",
+   "label": {
+    "fr": "Service-Public.fr, fiche F39426 « Naturalisation française : comment passer l’examen civique ? » (vérifiée le 16 juillet 2026)",
+    "en": "Service-Public.fr, page F39426 “Naturalisation française : comment passer l’examen civique ?” (checked 16 July 2026, in French)"
+   }
+  },
+  "sp_F39530": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F39530",
+   "checked": "2026-02-10",
+   "label": {
+    "fr": "Service-Public.fr, fiche F39530 « Carte de séjour pluriannuelle et carte de résident : comment passer l’examen civique ? » (vérifiée le 10 février 2026)",
+    "en": "Service-Public.fr, page F39530 “Carte de séjour pluriannuelle et carte de résident : comment passer l’examen civique ?” (checked 10 February 2026, in French)"
+   }
+  },
+  "sp_A18881": {
+   "url": "https://www.service-public.gouv.fr/particuliers/actualites/A18881",
+   "checked": "2026-05-12",
+   "label": {
+    "fr": "Service-Public.fr, « Titres de séjour : augmentation du montant des taxes demandées aux étrangers à compter du 1er mai » (mis à jour le 12 mai 2026)",
+    "en": "Service-Public.fr, “Residence permits: higher fees from 1 May” (updated 12 May 2026, in French)"
+   }
+  },
+  "lf2026_art128": {
+   "url": "https://www.legifrance.gouv.fr/eli/loi/2026/2/19/CPPX2524517L/jo/article_128",
+   "checked": "2026-10-13",
+   "label": {
+    "fr": "Loi n° 2026-103 du 19 février 2026 de finances pour 2026, article 128 (Légifrance)",
+    "en": "Finance Act 2026 (Act no. 2026-103 of 19 February 2026), section 128 (Légifrance)"
+   }
+  },
+  "insee_smic": {
+   "url": "https://www.insee.fr/fr/statistiques/1375188",
+   "checked": "2026-09-09",
+   "label": {
+    "fr": "Insee, « Smic : données annuelles de 1980 à 2026 » (paru le 9 septembre 2026)",
+    "en": "Insee, “Minimum wage (Smic): annual data 1980 to 2026” (published 9 September 2026)"
+   }
+  },
+  "arrete_smic_2026": {
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054126589",
+   "checked": "2026-10-13",
+   "label": {
+    "fr": "Arrêté du 22 mai 2026 relatif au relèvement du salaire minimum de croissance (JO du 22 mai 2026)",
+    "en": "Order of 22 May 2026 raising the minimum wage (Official Journal, 22 May 2026)"
+   }
+  },
+  "arrete_salaire_ref": {
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000052158119",
+   "checked": "2026-10-13",
+   "label": {
+    "fr": "Arrêté du 21 août 2025 relatif au salaire brut moyen annuel de référence (talent-salarié qualifié, carte bleue européenne)",
+    "en": "Order of 21 August 2025 on the reference average gross annual salary (talent: skilled employee, EU Blue Card)"
+   }
+  },
+  "ceseda_l436": {
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070158/LEGISCTA000042772036/",
+   "checked": "2026-10-13",
+   "label": {
+    "fr": "CESEDA, articles L436-1 à L436-13 (taxes et droits de timbre)",
+    "en": "CESEDA (immigration code), sections L436-1 to L436-13 (fees and stamp duties)"
+   }
+  },
+  "ceseda_r434": {
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070158/LEGISCTA000042801422/",
+   "checked": "2026-10-13",
+   "label": {
+    "fr": "CESEDA, articles R434-1 et suivants (regroupement familial : ressources, logement)",
+    "en": "CESEDA, sections R434-1 onwards (family reunification: income, housing)"
+   }
+  },
+  "cciv_21_14": {
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006165459",
+   "checked": "2026-10-13",
+   "label": {
+    "fr": "Code civil, articles 21-14-1 à 21-25-1 (naturalisation)",
+    "en": "Civil Code, articles 21-14-1 to 21-25-1 (naturalisation)"
+   }
+  },
+  "cciv_21_1": {
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006165440",
+   "checked": "2026-10-13",
+   "label": {
+    "fr": "Code civil, articles 21-1 à 21-6 (nationalité par mariage)",
+    "en": "Civil Code, articles 21-1 to 21-6 (nationality through marriage)"
+   }
+  },
+  "decret_93_1362": {
+   "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000699753",
+   "checked": "2026-10-13",
+   "label": {
+    "fr": "Décret n° 93-1362 du 30 décembre 1993 (procédure de naturalisation, délais de réponse)",
+    "en": "Decree no. 93-1362 of 30 December 1993 (naturalisation procedure, response times)"
+   }
+  },
+  "ceseda_r431": {
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070158/LEGISCTA000043288804/",
+   "checked": "2026-10-13",
+   "label": {
+    "fr": "CESEDA, articles R431-12 à R431-15 (récépissé)",
+    "en": "CESEDA, sections R431-12 to R431-15 (receipt of application)"
+   }
+  },
+  "ceseda_l436_10": {
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070158/LEGISCTA000042772058/",
+   "checked": "2026-10-13",
+   "label": {
+    "fr": "CESEDA, articles L436-10 à L436-13 (taxe employeur)",
+    "en": "CESEDA, sections L436-10 to L436-13 (employer tax)"
+   }
+  }
+ }
+}
