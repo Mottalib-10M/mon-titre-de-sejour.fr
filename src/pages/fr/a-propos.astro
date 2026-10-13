@@ -1,0 +1,31 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { YEAR, LAST_UPDATED, AUTHOR_NAME, CONTACT_EMAIL, AUTHOR_ROLE } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { organizationSchema, breadcrumbSchema, profilePageSchema } from '../../lib/seo';
+import { displayDate } from '../../lib/format';
+import { P } from '../../lib/engine/params';
+const lang = 'fr';
+const nFiches = Object.keys(P.sources).filter((k) => k.startsWith('sp_')).length;
+---
+<PageLayout title="SimulSéjour 2026 : qui publie ce site et pourquoi il calcule" description="SimulSéjour 2026 : qui édite ces simulateurs du séjour et de la nationalité, d'où vient chaque montant, ce que nous ne faisons pas, comment signaler une erreur." lang={lang} jsonLd={[organizationSchema(lang), profilePageSchema({ path: route('about', lang), lang }), breadcrumbSchema([{ name: 'Accueil', path: route('home', lang) }, { name: 'À propos', path: route('about', lang) }])]} breadcrumbs={[{ label: 'À propos' }]}>
+  <header class="mb-6"><h1 class="text-3xl font-bold text-navy-900 md:text-4xl">À propos de SimulSéjour</h1></header>
+  <div class="prose prose-slate max-w-none">
+    <div class="not-prose mb-6"><p class="text-lg font-semibold text-navy-900">{AUTHOR_NAME}</p><p class="text-navy-700">{AUTHOR_ROLE[lang]}</p></div>
+    <p>Radif Partners édite des simulateurs indépendants sur des démarches où une erreur coûte cher. Celui-ci répond aux questions que se pose toute personne étrangère qui vit en France ou s'y prépare : quel titre demander, combien il coûtera en timbres fiscaux, à partir de quelle date déposer une demande de carte de résident ou de naturalisation, et si les revenus du foyer suffisent pour faire venir sa famille.</p>
+    <h2>Pourquoi ce site existe</h2>
+    <p>Les fiches officielles de Service-Public.fr sont exactes, mais elles s'arrêtent avant le calcul : elles donnent une durée de cinq ans sans dire quel jour elle s'achève pour vous, un seuil de ressources « en moyenne sur douze mois » sans faire la moyenne, un tarif par titre sans additionner le visa validé, la première carte et les renouvellements. Les premiers résultats privés, eux, se contredisent d'une ligne à l'autre, recopient des montants d'avant le 1er mai 2026 ou invitent à un « appel découverte » au lieu de donner un chiffre.</p>
+    <p>Ce site fait mieux que le premier résultat Google parce qu'il calcule, pour la situation de chacun, le coût total des timbres, la date d'éligibilité à la carte de résident ou à la nationalité, le seuil de ressources du regroupement familial sur le Smic réellement en vigueur et le calendrier de renouvellement, chaque règle citant sa fiche officielle datée, sans formulaire de contact ni délai de préfecture inventé.</p>
+    <h2>Comment nous travaillons</h2>
+    <p>Nous avons relu {nFiches} fiches de Service-Public.fr le 13 octobre 2026, ainsi que l'actualité officielle sur la hausse des taxes du 1er mai 2026 et la série du Smic publiée par l'Insee. Chaque montant vit dans un seul fichier de paramètres, avec sa source et sa date ; chaque règle de calcul est vérifiée par un test automatique avant publication. Le détail est sur la page <a href={route('method', lang)}>Méthode</a>.</p>
+    <h2>Ce que nous ne sommes pas</h2>
+    <p>Nous ne sommes ni une administration, ni un cabinet d'avocats, ni un service de prise de rendez-vous. Le site est indépendant du ministère de l'Intérieur, des préfectures, de l'OFII et de l'ANEF. Nous ne collectons aucun numéro de téléphone ni aucune adresse, nous ne vendons aucun accompagnement et ne recommandons aucun prestataire. Les informations publiées sont générales : elles ne constituent pas un conseil juridique. Pour un cas difficile, les associations d'aide aux étrangers, les points d'accès au droit ou un avocat peuvent vous aider.</p>
+    <h2>Délais de préfecture</h2>
+    <p>Beaucoup de sites publient des délais « par préfecture » tirés de forums. Aucune source officielle ne les publie, et une préfecture peut traiter en trois semaines un dossier et en huit mois un autre. Nous affichons donc seulement les délais que la loi fixe : le délai au terme duquel le silence vaut refus, et le délai maximal de réponse en matière de nationalité.</p>
+    <h2>Deux langues</h2>
+    <p>Chaque page existe en français et en anglais. La version anglaise s'adresse aux personnes installées en France qui lisent plus facilement l'anglais : salariés détachés, étudiants, conjoints. Les termes administratifs français y sont gardés et expliqués, parce que ce sont eux qui figurent sur les formulaires.</p>
+    <h2>Financement</h2><p>Les simulateurs sont gratuits et ne conservent rien. Si de la publicité apparaît un jour, elle ne sera jamais placée au-dessus d'un calcul.</p>
+    <h2>Signaler une erreur</h2><p>Un montant a changé, une fiche a été mise à jour ? Écrivez à <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Voir aussi la <a href={route('editorial', lang)}>charte éditoriale</a> et les <a href={route('terms', lang)}>mentions légales</a>.</p>
+    <p class="text-sm text-navy-600">Règles {YEAR}, vérifiées le <time datetime={LAST_UPDATED}>{displayDate(LAST_UPDATED, 'fr-FR')}</time>.</p>
+  </div>
+</PageLayout>

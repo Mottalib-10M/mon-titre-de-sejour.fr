@@ -1,0 +1,31 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { AUTHOR_NAME, CONTACT_EMAIL, LAST_UPDATED, REVIEW_CYCLE_MONTHS } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+const lang = 'fr';
+import { P } from '../../lib/engine/params';
+import { seuilRegroupement } from '../../lib/engine/famille';
+import { formatMoney } from '../../lib/format';
+const e = (n: number, d = 0) => formatMoney(n, d, lang);
+---
+<PageLayout title="Charte éditoriale SimulSéjour : sources, tests et corrections" description="D'où viennent les montants et les règles de ce site sur le séjour des étrangers, pourquoi nous ne publions aucun délai de préfecture et comment une erreur est corrigée." lang={lang} noindex={true} breadcrumbs={[{ label: 'Charte éditoriale' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Charte éditoriale et corrections</h1>
+    <p>Un titre refusé pour un dépôt tardif, un timbre acheté au mauvais montant, un dossier de naturalisation déposé trois mois trop tôt : sur ces démarches, une approximation se paie en mois d'attente. Voici nos règles.</p>
+    <h2>Responsabilité</h2><p>{AUTHOR_NAME} répond du contenu et des calculs. Contact : <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+    <h2>Sources officielles seulement</h2>
+    <ul>
+      <li>les fiches de <strong>Service-Public.fr</strong> (Direction de l'information légale et administrative), avec leur date de vérification ;</li>
+      <li>le <strong>CESEDA</strong>, le <strong>Code civil</strong> et la <strong>loi de finances pour 2026</strong>, cités par article ;</li>
+      <li>les arrêtés publiés au <strong>Journal officiel</strong> (Smic, salaire de référence du passeport talent) ;</li>
+      <li>la série du <strong>Smic</strong> publiée par l'Insee.</li>
+    </ul>
+    <h2>Ce que nous refusons de publier</h2><p>Aucun délai moyen de préfecture, aucun taux d'acceptation, aucune « astuce » pour obtenir un rendez-vous : aucune source officielle ne les fonde. Aucun montant n'est publié s'il n'a pas été lu sur une page officielle datée.</p>
+    <h2>Aucun intérêt commercial</h2><p>Nous ne percevons rien d'un avocat, d'une plateforme de rendez-vous ou d'une école de langue, et n'en nommons aucun.</p>
+    <h2>Tests</h2><p>Avant chaque mise en ligne, des tests automatiques rejouent les exemples des fiches : {e(P.tarifs.normal.premiere)} et {e(P.tarifs.normal.renouvellement)} pour une carte salarié, {e(seuilRegroupement(4, '2027-06-15').seuil, 2)} pour un regroupement familial à quatre personnes quand les douze mois sont au Smic actuel, {P.naturalisation.delai_mois} mois de délai de réponse en naturalisation. Un écart bloque la publication.</p>
+    <h2>Rythme de révision</h2><p>Au moins tous les {REVIEW_CYCLE_MONTHS} mois, à chaque loi de finances, à chaque revalorisation du Smic et à chaque mise à jour d'une fiche citée.</p>
+    <h2>Corrections</h2>
+    <ol><li>Vérification sur la source officielle.</li><li>Correction du paramètre ou du calcul, ajout d'un test.</li><li>Nouvelle date sur la page.</li></ol>
+    <p>Voir aussi la <a href={route('method', lang)}>méthode</a>. Version : {LAST_UPDATED}.</p>
+  </div>
+</PageLayout>

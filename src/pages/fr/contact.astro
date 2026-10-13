@@ -1,0 +1,22 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { AUTHOR_NAME, CONTACT_EMAIL, LAST_UPDATED, REVIEW_CYCLE_MONTHS } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+const lang = 'fr';
+---
+<PageLayout title="Contact SimulSéjour : signaler un montant ou une fiche modifiée" description="Écrivez-nous si une fiche officielle a changé, si un timbre fiscal ou un seuil n'est plus à jour ou si un simulateur se trompe. Nous ne traitons aucun dossier individuel." lang={lang} noindex={true} breadcrumbs={[{ label: 'Contact' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Contact</h1>
+    <p>Une seule adresse, lue par l'éditeur : <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+    <h2>Ce qui nous aide</h2>
+    <p>Le lien vers la source officielle qui contredit un chiffre : la fiche Service-Public.fr mise à jour, l'arrêté publié au Journal officiel, l'article du CESEDA ou du Code civil. Pour un calcul, copiez l'adresse affichée par votre navigateur après la saisie : elle contient les valeurs entrées, jamais votre nom. Chaque erreur confirmée est corrigée et devient un test automatique, comme le prévoit la <a href={route('editorial', lang)}>charte éditoriale</a>.</p>
+    <h2>Ce que nous ne faisons pas</h2>
+    <p>Nous n'examinons pas les dossiers, ne prenons pas de rendez-vous en préfecture et ne répondons pas aux questions sur une situation personnelle : nous ne sommes ni une administration ni un cabinet d'avocats. Pour votre dossier, adressez-vous à votre préfecture, à l'OFII, à une association d'aide aux étrangers ou à un point d'accès au droit.</p>
+    <h2>Intégrer un simulateur</h2><p>Associations, écoles, services RH et médias peuvent intégrer gratuitement le simulateur « quel titre pour ma situation » : le code est sur la page <a href={route('widget', lang)}>Intégrer un simulateur</a>.</p>
+    <h2>Délai de réponse</h2><p>En général sous cinq jours ouvrés ; les changements de barème passent en premier. Tous les montants sont revus au moins tous les {REVIEW_CYCLE_MONTHS} mois et à chaque réforme.</p>
+    <h2>Éditeur</h2>
+    <LegalIdentity lang={lang} />
+    <p>Voir les <a href={route('terms', lang)}>mentions légales</a>. Responsable : {AUTHOR_NAME}. Mise à jour : {LAST_UPDATED}.</p>
+  </div>
+</PageLayout>

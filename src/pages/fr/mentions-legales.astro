@@ -1,0 +1,24 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { AUTHOR_NAME, CONTACT_EMAIL, LAST_UPDATED, SITE_URL } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+const lang = 'fr';
+---
+<PageLayout title="Mentions légales SimulSéjour : éditeur, hébergeur et limites" description="Mentions légales (article 6 de la LCEN) du site SimulSéjour sur les titres de séjour et la nationalité : éditeur, directeur de la publication, hébergeur et limites." lang={lang} noindex={true} breadcrumbs={[{ label: 'Mentions légales' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Mentions légales</h1>
+    <p>Informations prévues par l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique (LCEN), pour le site {SITE_URL}.</p>
+    <h2>Éditeur</h2>
+    <LegalIdentity lang={lang} />
+    <h2>Directeur de la publication</h2><p>{AUTHOR_NAME}, joignable à <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+    <h2>Hébergeur</h2>
+    <LegalIdentity mode="hosting" lang={lang} />
+    <h2>Objet et limites</h2>
+    <p>Le site explique les règles d'entrée, de séjour et d'accès à la nationalité française et propose des simulateurs qui appliquent ces règles (timbres fiscaux, dates d'éligibilité, ressources du regroupement familial, seuils de salaire). Il est indépendant de l'administration : il n'est lié ni au ministère de l'Intérieur, ni aux préfectures, ni à l'OFII, ni au portail ANEF, ni à aucun cabinet d'avocats. Les résultats sont des informations générales, pas un conseil juridique ni une décision : seule l'autorité compétente statue sur une demande. La méthode est décrite sur la page <a href={route('method', lang)}>Méthode</a>.</p>
+    <h2>Responsabilité</h2>
+    <p>Les montants et règles sont relus sur les sources officielles à chaque réforme et testés avant chaque publication ; l'absence d'erreur ne peut toutefois être garantie. Les sites liés relèvent de la responsabilité de leurs éditeurs ; nos liens externes mènent à des sources publiques. Signalez toute erreur via la page <a href={route('contact', lang)}>Contact</a>.</p>
+    <h2>Propriété intellectuelle</h2><p>Les textes et calculs du site sont protégés. Les informations publiques reprises de Service-Public.fr le sont sous la Licence ouverte Etalab 2.0, avec mention de la source et de la date. Le simulateur peut être intégré gratuitement : <a href={route('widget', lang)}>Intégrer un simulateur</a>.</p>
+    <h2>Données personnelles</h2><p>Voir la <a href={route('privacy', lang)}>politique de confidentialité</a> et la page <a href={route('cookies', lang)}>Cookies</a>. Mise à jour : {LAST_UPDATED}.</p>
+  </div>
+</PageLayout>

@@ -1109,6 +1109,49 @@
     "fr": "CESEDA, articles L436-10 à L436-13 (taxe employeur)",
     "en": "CESEDA, sections L436-10 to L436-13 (employer tax)"
    }
+  },
+  "sp_F21032": {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F21032",
+   "checked": "2026-07-01",
+   "label": {
+    "fr": "Service-Public.fr, fiche F21032 « Que doit faire un étranger en cas de perte de sa carte de séjour ? » (vérifiée le 1er juillet 2026)",
+    "en": "Service-Public.fr, page F21032 “Que doit faire un étranger en cas de perte de sa carte de séjour ?” (checked 1 July 2026, in French)"
+   }
   }
+ },
+ "stagiaire": {
+  "_source": "sp_F17312",
+  "ressources_entreprise": 615,
+  "ressources_formation_continue": 1867.02,
+  "duree_max_mois": 18
+ },
+ "au_pair": {
+  "_source": "sp_F15813",
+  "argent_de_poche_min": 320
+ },
+ "algerien": {
+  "_source": "sp_F2257",
+  "dix_ans_cout": 0,
+  "absence_max_ans": 3,
+  "_source_un_an": "sp_F2215",
+  "un_an_premiere": 350
+ },
+ "autorisation_travail": {
+  "_source": "sp_F2728",
+  "implicite_mois": 2,
+  "recours_mois": 2,
+  "offre_semaines": 3
+ },
+ "recours": {
+  "_source": "sp_F2209",
+  "mois": 2
+ },
+ "ict": {
+  "_source": "sp_F33952",
+  "ressources_mensuelles": 1867.02
+ },
+ "entrepreneur": {
+  "_source": "sp_F35795",
+  "revenu_mensuel_min": 1867.02
  }
 }

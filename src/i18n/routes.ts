@@ -1,24 +1,24 @@
 import { makeRouter, type RouteDef } from './routes-core';
 import { PAGES } from '../lib/guides';
-export const LOCALES = ['de', 'en'] as const;
+export const LOCALES = ['fr', 'en'] as const;
 export type Locale = (typeof LOCALES)[number];
-export const DEFAULT_LOCALE: Locale = 'de';
-const R = (id: string, de: string, en: string, noindex = false): RouteDef<Locale> => ({ id, paths: { de: `/de/${de}/`, en: `/en/${en}/` }, ...(noindex ? { noindex } : {}) });
+export const DEFAULT_LOCALE: Locale = 'fr';
+const R = (id: string, fr: string, en: string, noindex = false): RouteDef<Locale> => ({ id, paths: { fr: `/fr/${fr}/`, en: `/en/${en}/` }, ...(noindex ? { noindex } : {}) });
 /** Pages du cœur. Les guides et les pages outils viennent de `src/content/` (lib/guides.ts). */
 const CORE: RouteDef<Locale>[] = [
-  { id: 'home', paths: { de: '/de/', en: '/en/' } },
-  R('method', 'methodik', 'method'),
-  R('about', 'ueber-uns', 'about'),
+  { id: 'home', paths: { fr: '/fr/', en: '/en/' } },
+  R('method', 'methode', 'method'),
+  R('about', 'a-propos', 'about'),
   R('widget', 'widget', 'widget', true),
-  R('contact', 'kontakt', 'contact', true),
-  R('editorial', 'redaktionsrichtlinien', 'editorial-policy', true),
-  R('privacy', 'datenschutz', 'privacy', true),
-  R('terms', 'impressum', 'legal-notice', true),
+  R('contact', 'contact', 'contact', true),
+  R('editorial', 'charte-editoriale', 'editorial-policy', true),
+  R('privacy', 'confidentialite', 'privacy', true),
+  R('terms', 'mentions-legales', 'legal-notice', true),
   R('cookies', 'cookies', 'cookies', true),
 ];
 export const ROUTES: RouteDef<Locale>[] = [
   CORE[0],
-  ...PAGES.map((p) => R(p.id, p.de.slug, p.en.slug)),
+  ...PAGES.map((p) => R(p.id, p.fr.slug, p.en.slug)),
   ...CORE.slice(1),
 ];
 export const { NOINDEX_PATHS, route, altPaths } = makeRouter(LOCALES, ROUTES);

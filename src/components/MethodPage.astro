@@ -1,99 +1,89 @@
 ---
 /** Méthode et sources (page de confiance, RECETTE §8.2) : données, règles appliquées, contrôles, limites. */
 import PageLayout from '../layouts/PageLayout.astro';
+import Sources from './Sources.astro';
 import { route, type Locale } from '../i18n/routes';
 import { P } from '../lib/engine/params';
-import { BERLIN } from '../lib/engine/berlin';
-import { HAMBURG } from '../lib/engine/hamburg';
-import { DORTMUND } from '../lib/engine/dortmund';
-import { LAENDER_VO } from '../lib/engine/gebiet';
-import { STAEDTE } from '../lib/engine/staedte';
-import { displayDate, formatDecimal } from '../lib/format';
+import { TITRES } from '../lib/engine/couts';
+import { moyenneSmic12 } from '../lib/engine/smic';
+import { displayDate, formatMoney, formatPercent } from '../lib/format';
 import { breadcrumbSchema, webPageSchema } from '../lib/seo';
 import { LAST_UPDATED, CONTACT_EMAIL, REVIEW_CYCLE_MONTHS } from '../data/site-config';
 interface Props { lang: Locale }
 const { lang } = Astro.props;
-const de = lang === 'de';
-const E = P.erhoehung, M = P.modernisierung;
-const title = de ? 'Mietspiegel-Rechner 2026: Methodik, Quellen und Rechenwege' : 'Rent Check Germany 2026: Method, Sources and Calculations';
-const description = de ? 'Methodik 2026: wie wir Berliner und Hamburger Mietspiegel einlesen, die Verordnungen der 16 Länder abgleichen, Fristen nach BGB rechnen und alles testen.' : 'Method 2026: how we read the Berlin and Hamburg rent indexes, match the ordinances of all 16 states, calculate Civil Code deadlines and test every step.';
-const h1 = de ? 'Methodik und Quellen' : 'Method and sources';
+const fr = lang === 'fr';
+const title = fr ? 'Méthode SimulSéjour 2026 : barèmes, règles et sources datées' : 'Method SimulSejour 2026: Fees, Rules and Dated Sources';
+const description = fr ? 'Méthode 2026 : comment nous lisons Service-Public, le CESEDA et le Code civil, calculons timbres, dates et seuils, testons chaque règle, sans délai inventé.' : 'Method 2026: how we read Service-Public pages, the CESEDA and Civil Code, compute stamps, dates and thresholds, test each rule, and invent no waiting times.';
+const h1 = fr ? 'Méthode et sources' : 'Method and sources';
 const path = route('method', lang);
-const sources = Object.values(P.sources);
-const d = (iso: string) => displayDate(iso, de ? 'de-DE' : 'en-GB');
-const nGem = LAENDER_VO.reduce((s, l) => s + (l.mpb?.gemeinden.length ?? 0), 0);
-const nKap = LAENDER_VO.reduce((s, l) => s + (l.kappung?.gemeinden.length ?? 0), 0);
-const gesperrt = STAEDTE.filter((s) => s.schema === 'eingabe');
+const d = (iso: string) => displayDate(iso, fr ? 'fr-FR' : 'en-GB');
+const e = (n: number, dec = 0) => formatMoney(n, dec, lang);
+const T = P.tarifs, RF = P.regroupement;
+const ex = moyenneSmic12('2026-10-13');
+const nFiches = Object.keys(P.sources).filter((k) => k.startsWith('sp_')).length;
+const H = P.smic.historique;
 ---
-<PageLayout title={title} description={description} lang={lang} jsonLd={[webPageSchema({ name: h1, description, path, lang }), breadcrumbSchema([{ name: de ? 'Start' : 'Home', path: route('home', lang) }, { name: h1, path }])]} breadcrumbs={[{ label: h1 }]}>
+<PageLayout title={title} description={description} lang={lang} jsonLd={[webPageSchema({ name: h1, description, path, lang }), breadcrumbSchema([{ name: fr ? 'Accueil' : 'Home', path: route('home', lang) }, { name: h1, path }])]} breadcrumbs={[{ label: h1 }]}>
   <header class="mb-6"><h1 class="text-3xl font-bold text-navy-900 md:text-4xl">{h1}</h1></header>
-  {de ? (
+  {fr ? (
   <div class="prose prose-slate max-w-none">
-    <p>Jede Zahl dieser Website steht in einer von vier Dateien: dem Berliner Mietspiegel, dem Hamburger Mietenspiegel, der Liste der Landesverordnungen und einer Parameterdatei mit den Werten aus dem BGB und den Verordnungen des Bundes. Geprüft haben wir sie am <time datetime={P.retrieved_at}>{d(P.retrieved_at)}</time>. Seiten und Rechner lesen nur aus diesen Dateien.</p>
-    <h2>Berliner Mietspiegel 2026</h2>
-    <p>Ein Skript liest die Mietspiegeltabelle aus dem amtlichen PDF der Senatsverwaltung und prüft, dass alle {BERLIN.zeilen.length} Zeilen vorhanden sind und jede Spanne geordnet ist. Der Rechner wählt das Feld nach Wohnlage, Bezugsfertigkeit (1973 bis 1990 getrennt nach Ost und West) und Wohnfläche. Vom Mittelwert aus wendet er die Orientierungshilfe an: je Merkmalgruppe ±20 Prozent des Abstands zum Spannenrand, Gruppen gegeneinander aufgerechnet (Abschnitt zur Spanneneinordnung der Broschüre). Für Wohnungen bis 1949 ohne Sammelheizung oder Bad zieht er 0,33 Euro je Quadratmeter ab, wie es die Broschüre vorsieht. Das Rechenbeispiel der Broschüre (Zeile 81, 7,75 Euro) läuft als Test. Orientierungshilfe und Abschlag gehören nicht zum qualifizierten Teil des Mietspiegels; das steht so in der Broschüre, und wir weisen darauf hin.</p>
-    <h2>Hamburger Mietenspiegel 2025</h2>
-    <p>Die {HAMBURG.felder.length} belegten Felder stammen aus dem offenen Datensatz der Behörde für Stadtentwicklung und Wohnen (Datenlizenz Deutschland – Namensnennung (dl-de/by-2-0)) und sind mit der Tabelle im PDF abgeglichen; bei einer Abweichung zwischen Datensatz und PDF (Feld C9) gilt das PDF. Weil der Hamburger Mietenspiegel keine Zahlen für Zu- und Abschläge nennt, wählt der Nutzer die Lage in der Spanne selbst: unterer Bereich, Mittelwert oder oberer Bereich.</p>
-    <h2>Mietspiegel Dortmund 2025/2026</h2>
-    <p>Die Basistabelle mit {DORTMUND.basis.length} Baujahresklassen und die {DORTMUND.merkmale.length} Zu- und Abschläge stammen aus dem Mietspiegel, den die Stadt als Sonderdruck ihres Amtsblatts vom 20. Dezember 2024 veröffentlicht hat. Der Rechner addiert Größenzuschlag, Gebietszuschlag und die gewählten Merkmale auf Mittelwert und Spannengrenzen, wie es der Mietspiegel vorschreibt; Modernisierungszuschläge nur für Gebäude vor 1980. Das Rechenbeispiel der Stadt (1950, 63 m², 7,10 Euro) läuft als Test.</p>
-    <h2>Städte mit Rechtevorbehalt</h2>
-    <p>{gesperrt.map((s) => s.name).join(', ')} behalten sich die Rechte an ihren Mietspiegeln ausdrücklich vor. Von ihnen übernehmen wir keinen Wert. Der Rechner verlinkt das offizielle Angebot der Stadt, Sie tragen die Vergleichsmiete ein, und wir wenden darauf die Regeln Ihrer Gemeinde an.</p>
-    <h2>Verordnungen der Länder</h2>
-    <p>Für jedes Land haben wir die geltende Verordnung zur Mietpreisbremse (§ 556d Abs. 2 BGB) und zur Kappungsgrenze (§ 558 Abs. 3 BGB) im Gesetz- und Verordnungsblatt gelesen: Titel, Fundstelle, Inkrafttreten, Ablauf und die Gemeindeliste. Zusammen sind es {nGem} Einträge für die Mietpreisbremse und {nKap} für die Kappungsgrenze; jede Liste ist gegen den amtlichen Text gezählt. Gilt eine Verordnung nur für Teile einer Gemeinde, weist der Rechner darauf hin. Mehrere Verordnungen laufen bald aus; wir tragen Nachfolger ein, sobald sie verkündet sind.</p>
-    <h2>Regeln der Rechner</h2>
+    <p>Chaque montant et chaque durée du site vient d'un seul fichier de paramètres, relu le <time datetime={P.retrieved_at}>{d(P.retrieved_at)}</time> sur {nFiches} fiches de Service-Public.fr, l'actualité officielle sur la hausse des taxes, la série du Smic de l'Insee et les textes qu'elles citent. Les pages et les simulateurs ne lisent que ce fichier : quand un montant change, il change partout.</p>
+    <h2>Pourquoi Service-Public.fr plutôt que Légifrance</h2>
+    <p>Le texte officiel du CESEDA et du Code civil est sur Légifrance, qui refuse les lectures automatisées ; son API ouverte (PISTE) demande une inscription que nous n'avons pas faite. Nous lisons donc les fiches de Service-Public.fr, rédigées par la Direction de l'information légale et administrative, qui portent leur date de vérification et la liste des articles appliqués. Chaque page du site cite la fiche et l'article, avec un lien vers Légifrance.</p>
+    <h2>Timbres fiscaux</h2>
+    <p>Barème en vigueur depuis le {d(T.en_vigueur)} (article 128 de la loi de finances pour 2026) : première délivrance {e(T.normal.premiere)} au tarif normal (taxe de {e(T.normal.taxe_premiere)} et droit de timbre de {e(T.droit_timbre)}), {e(T.minore.premiere)} au tarif minoré ; renouvellement {e(T.normal.renouvellement)} ou {e(T.minore.renouvellement)} ; duplicata au prix d'une première délivrance ; validation du VLS-TS {e(T.vls_ts.normal)} ou {e(T.vls_ts.minore)} ; visa de régularisation {e(T.visa_regularisation)} dont {e(T.visa_regularisation_non_remboursable)} au dépôt ; dépôt hors délai {e(T.retard_renouvellement)} ; nationalité {e(T.nationalite)} ({e(T.nationalite_guyane, 2)} en Guyane). Le tarif de chacun des {TITRES.length} titres du simulateur a été relevé sur sa propre fiche. Le droit de visa payé au consulat dépend du pays : nous ne l'inventons pas, et le simulateur le signale.</p>
+    <h2>Seuil du regroupement familial</h2>
+    <p>La règle : moyenne du Smic mensuel brut sur les {RF.periode_mois} mois qui précèdent la demande, majorée d'un dixième à 4 ou 5 personnes et d'un cinquième à partir de 6. Le simulateur fait la moyenne mois par mois avec le Smic en vigueur le 1er de chaque mois ({H.map((x) => `${e(x.mensuel, 2)} depuis le ${d(x.depuis)}`).slice(-3).join(', ')}). Pour un dépôt le 13 octobre 2026, la moyenne vaut {e(ex.moyenne, 2)}, sous le Smic actuel, parce que trois mois de 2025 entrent dans la période. Service-Public.fr affiche le Smic actuel ; notre chiffre est celui de votre date de dépôt. Le logement : {RF.surface.base.A} m² en zones A bis et A, {RF.surface.base.B} m² en B1 et B2, {RF.surface.base.C} m² en C pour deux personnes, plus {RF.surface.par_personne} m² par personne jusqu'à huit, puis {RF.surface.au_dela_8} m².</p>
+    <h2>Dates d'éligibilité</h2>
     <ul>
-      <li><strong>Mietpreisbremse</strong>: Vergleichsmiete plus {P.mpb.aufschlag * 100} Prozent, höhere Vormiete, Ausnahmen nach § 556f, Rückforderung nach § 556g Abs. 2 mit der Grenze von {P.mpb.ruege_monate} Monaten; Monate gezählt ab dem Monat des Mietbeginns.</li>
-      <li><strong>Mieterhöhung</strong>: Minimum aus Vergleichsmiete und Kappungsgrenze ({E.kappung * 100} oder {E.kappung_angespannt * 100} Prozent), Sperrfrist {E.sperrfrist_monate} Monate, Wartefrist {E.wartefrist_monate} Monate, Zustimmung bis Ende des zweiten Kalendermonats, Wirkung ab dem dritten.</li>
-      <li><strong>Modernisierung</strong>: {M.umlage * 100} Prozent der Kosten jährlich, Kappung {M.kappung_m2} Euro je m² in sechs Jahren ({M.kappung_m2_niedrig} Euro unter {M.niedrig_unter_m2} Euro Miete), vereinfachtes Verfahren mit {M.vereinfacht_pauschale * 100} Prozent Pauschale, § 559e mit {M.umlage_559e * 100} Prozent und höchstens {formatDecimal(M.heizung_kappung_m2, 2, lang)} Euro je m².</li>
-      <li><strong>Nebenkosten</strong>: Abrechnungs- und Einwendungsfrist je zwölf Monate, Umrechnung je m² und Monat wie in der Berliner Betriebskostenübersicht.</li>
-      <li><strong>CO2-Kosten</strong>: Ausstoß je m² auf eine Nachkommastelle gerundet, Stufe nach der Anlage zum CO2KostAufG, Halbierung oder Wegfall des Vermieteranteils nach § 9.</li>
-      <li><strong>Kündigung</strong>: Zugang bis zum dritten Werktag, Samstag zählt mit (BGH, VIII ZR 206/04), bundesweite und je Land die Feiertage, die in den ersten Tagen eines Monats liegen können.</li>
-      <li><strong>Indexmiete</strong>: Verbraucherpreisindex 2020 = 100 des Statistischen Bundesamts, Monatswerte bis {Object.keys(P.vpi.werte).sort().pop()}.</li>
+      <li><strong>Naturalisation</strong> : {P.naturalisation.residence_ans} ans de résidence, {P.naturalisation.reduite_ans} ans après deux années d'études supérieures diplômantes en France, aucune durée pour un réfugié ; dépôt dès {P.naturalisation.depot_age} ans ; réponse en {P.naturalisation.delai_mois} mois après le récépissé ({P.naturalisation.delai_10ans_mois} mois avec dix ans de résidence), prolongeable une fois de {P.naturalisation.prolongation_mois} mois.</li>
+      <li><strong>Mariage</strong> : {P.mariage.duree_ans} ans de mariage, {P.mariage.duree_longue_ans} ans sans trois ans de résidence continue en France depuis le mariage (sauf inscription consulaire du conjoint) ; refus d'enregistrement possible pendant {P.mariage.refus_ans} an, {P.mariage.refus_opposition_ans} ans en cas d'opposition.</li>
+      <li><strong>Carte de résident</strong> : {P.resident.residence_ans} ans de résidence (longue durée-UE, absences limitées à {P.resident.absence_consecutive_mois} mois d'affilée et {P.resident.absences_total_mois} mois au total), {P.resident.conjoint_francais_ans} ans de mariage pour un conjoint de Français, niveau {P.resident.langue}.</li>
+      <li><strong>Renouvellement</strong> : dépôt entre {P.renouvellement.au_plus_tot_mois} et {P.renouvellement.au_plus_tard_mois} mois avant la fin du titre ; récépissé de {P.renouvellement.recepisse_mois} mois à partir du lendemain de l'expiration. Les dates se comptent de quantième à quantième ; un 31 devient le dernier jour d'un mois plus court.</li>
     </ul>
-    <h2>Was die Rechner nicht können</h2>
+    <h2>Seuils de salaire</h2>
+    <p>Salaire de référence fixé par l'arrêté du 21 août 2025 : {e(P.talent.salaire_ref)} brut annuel pour la carte talent salarié qualifié ; {formatPercent(P.talent.cbe_coef - 1, 0, lang)} de plus, soit {e(P.talent.cbe)}, pour la carte bleue européenne. Mandataire social : trois Smic annuels ({e(P.talent.mandataire, 2)}). Changement de statut après la carte recherche d'emploi : plus de {e(P.rece.seuil_mensuel, 2)} brut par mois, une fois et demie le Smic. Taxe employeur : {formatPercent(P.taxe_employeur.long_taux, 0, lang)} du salaire mensuel pour un contrat d'un an ou plus, plafonnée à {e(P.taxe_employeur.long_plafond, 2)}.</p>
+    <h2>Délais : ce que nous ne publions pas</h2>
+    <p>Aucune préfecture ne publie de délai moyen de traitement, et les chiffres qui circulent viennent de forums. Nous n'en publions pas. Nous calculons seulement les délais légaux : la date à laquelle le silence de l'administration vaut refus (4 mois dans le cas général, 90 jours pour l'étudiant et la carte bleue européenne, 6 mois pour le regroupement familial) et le délai maximal de réponse en matière de nationalité.</p>
+    <h2>Contrôles</h2>
+    <p>Des tests automatiques rejouent chaque règle avec les exemples des fiches officielles avant chaque publication. Les dates des simulateurs utilisent au premier affichage le jour de construction du site, puis le jour réel de votre navigateur. Nous revoyons tout au moins tous les {REVIEW_CYCLE_MONTHS} mois et à chaque réforme.</p>
+    <h2>Limites</h2>
     <ul>
-      <li>Die Wohnlage einer Adresse bestimmen; dafür gibt es das Straßenverzeichnis der Stadt.</li>
-      <li>Ein Gericht ersetzen, das die Vergleichsmiete im Einzelfall auch anders bestimmen kann, etwa durch ein Gutachten.</li>
-      <li>Eine Minderungsquote festlegen: Dafür gibt es keine amtliche Tabelle.</li>
-      <li>Möblierungszuschläge, Sozialwohnungen und Wohnheime abbilden.</li>
+      <li>L'orientation « quel titre » applique les conditions principales ; la préfecture apprécie aussi l'ordre public, l'intégration et des pièces que nous ne voyons pas.</li>
+      <li>Les ressortissants algériens relèvent de l'accord franco-algérien de 1968, aux règles propres ; nous le signalons sans le simuler en entier.</li>
+      <li>Les règles de Mayotte et des collectivités d'outre-mer ne sont pas couvertes.</li>
     </ul>
-    <h2>Quellen</h2>
-    <ul>{sources.map((s) => <li><a href={s.url} rel="nofollow noopener" target="_blank">{s.label.de}</a></li>)}</ul>
-    <p>Prüfrhythmus: mindestens alle {REVIEW_CYCLE_MONTHS} Monate. Fehler bitte an <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Letzte Prüfung: <time datetime={LAST_UPDATED}>{d(LAST_UPDATED)}</time>.</p>
-  </div>
-  ) : (
+    <p>Une erreur ? <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Mise à jour : {d(LAST_UPDATED)}.</p>
+    <Sources lang={lang} />
+  </div>) : (
   <div class="prose prose-slate max-w-none">
-    <p>Every figure on this site lives in one of four files: the Berlin rent index, the Hamburg rent index, the list of state ordinances, and a parameter file with the values from the Civil Code and the federal ordinances. We checked them on <time datetime={P.retrieved_at}>{d(P.retrieved_at)}</time>. Pages and calculators read only from these files.</p>
-    <h2>Berlin rent index 2026</h2>
-    <p>A script reads the table from the Senate department's official PDF and checks that all {BERLIN.zeilen.length} lines are present and every range is in order. The calculator picks the field by residential location, year of completion (1973 to 1990 split into East and West) and floor area. From the mean it applies the official guidance: ±20 per cent of the distance to the edge of the range for each group of features, with groups offsetting each other (the brochure's section on placing a flat in the range). For flats built up to 1949 without central heating or a bathroom it deducts 0.33 euros per square metre, as the brochure provides. The brochure's worked example (line 81, 7.75 euros) runs as a test. The guidance and the deduction are not part of the qualified index; the brochure says so and so do we.</p>
-    <h2>Hamburg rent index 2025</h2>
-    <p>The {HAMBURG.felder.length} filled fields come from the open dataset of the Department for Urban Development and Housing (German open-data licence, attribution (dl-de/by-2-0)), checked against the PDF table; where dataset and PDF differ (field C9) the PDF applies. Because Hamburg's index gives no figures for upward or downward adjustments, you choose the position in the range yourself: lower part, median or upper part.</p>
-    <h2>Dortmund rent index 2025/2026</h2>
-    <p>The base table with {DORTMUND.basis.length} construction periods and the {DORTMUND.merkmale.length} premiums and deductions come from the index the city published as a special issue of its official gazette on 20 December 2024. The calculator adds the size premium, the area premium and the chosen features to the mean and the range limits, as the index requires; modernisation premiums only for buildings before 1980. The city's worked example (1950, 63 m², 7.10 euros) runs as a test.</p>
-    <h2>Cities that reserve their rights</h2>
-    <p>{gesperrt.map((s) => s.name).join(', ')} expressly reserve the rights to their indexes. We take no figure from them. The calculator links the city's official tool, you enter the reference rent, and we apply your municipality's rules to it.</p>
-    <h2>State ordinances</h2>
-    <p>For each state we read the current rent-brake ordinance (Section 556d(2) BGB) and the cap ordinance (Section 558(3) BGB) in the official gazette: title, reference, start, expiry and the municipality list. Together that is {nGem} rent-brake entries and {nKap} cap entries, each list counted against the official text. Where an ordinance covers only part of a municipality, the calculator says so. Several ordinances expire soon; we add their successors as soon as they are published.</p>
-    <h2>Rules the calculators apply</h2>
+    <p>Every amount and every period on this site comes from a single parameter file, checked on <time datetime={P.retrieved_at}>{d(P.retrieved_at)}</time> against {nFiches} Service-Public.fr pages, the official notice on the fee increase, Insee's minimum-wage series and the legal texts they cite. Pages and calculators read only this file: when an amount changes, it changes everywhere.</p>
+    <h2>Why Service-Public.fr rather than Légifrance</h2>
+    <p>The official text of the CESEDA (immigration code) and the Civil Code is on Légifrance, which refuses automated reading; its open API (PISTE) requires a registration we have not made. We therefore read the Service-Public.fr pages written by the government's legal-information directorate, which carry their check date and the list of articles applied. Every page on this site cites the page and the article, with a link to Légifrance.</p>
+    <h2>Tax stamps</h2>
+    <p>Schedule in force since {d(T.en_vigueur)} (section 128 of the 2026 Finance Act): first issue {e(T.normal.premiere)} at the standard rate ({e(T.normal.taxe_premiere)} tax plus {e(T.droit_timbre)} stamp duty), {e(T.minore.premiere)} at the reduced rate; renewal {e(T.normal.renouvellement)} or {e(T.minore.renouvellement)}; replacement at the first-issue price; VLS-TS validation {e(T.vls_ts.normal)} or {e(T.vls_ts.minore)}; regularisation visa {e(T.visa_regularisation)}, {e(T.visa_regularisation_non_remboursable)} of it at filing; late filing {e(T.retard_renouvellement)}; citizenship {e(T.nationalite)} ({e(T.nationalite_guyane, 2)} in French Guiana). The rate for each of the {TITRES.length} permits in the calculator was read on that permit's own page. The visa fee paid at the consulate depends on the country: we do not make it up, and the calculator says so.</p>
+    <h2>Family-reunification threshold</h2>
+    <p>The rule: the average gross monthly minimum wage over the {RF.periode_mois} months before the application, plus one tenth for 4 or 5 people and one fifth from 6 people. The calculator averages month by month using the minimum wage in force on the 1st of each month ({H.map((x) => `${e(x.mensuel, 2)} from ${d(x.depuis)}`).slice(-3).join(', ')}). For an application filed on 13 October 2026, the average is {e(ex.moyenne, 2)}, below today's minimum wage, because three months of 2025 fall within the period. Service-Public.fr shows today's minimum wage; our figure is the one for your filing date. Housing: {RF.surface.base.A} m² in zones A bis and A, {RF.surface.base.B} m² in B1 and B2, {RF.surface.base.C} m² in C for two people, plus {RF.surface.par_personne} m² per person up to eight, then {RF.surface.au_dela_8} m².</p>
+    <h2>Eligibility dates</h2>
     <ul>
-      <li><strong>Rent brake</strong>: reference rent plus {P.mpb.aufschlag * 100} per cent, higher previous rent, Section 556f exemptions, refund under Section 556g(2) with the {P.mpb.ruege_monate}-month limit; months counted from the month the tenancy began.</li>
-      <li><strong>Rent increase</strong>: the lower of reference rent and cap ({E.kappung * 100} or {E.kappung_angespannt * 100} per cent), {E.sperrfrist_monate}-month waiting period, {E.wartefrist_monate}-month gap between increases, consent by the end of the second calendar month, effect from the third.</li>
-      <li><strong>Modernisation</strong>: {M.umlage * 100} per cent of costs a year, capped at {M.kappung_m2} euros per m² over six years ({M.kappung_m2_niedrig} euros below a rent of {M.niedrig_unter_m2} euros), simplified procedure with a {M.vereinfacht_pauschale * 100} per cent flat deduction, Section 559e with {M.umlage_559e * 100} per cent and at most {formatDecimal(M.heizung_kappung_m2, 2, lang)} euros per m².</li>
-      <li><strong>Service charges</strong>: twelve-month statement and objection deadlines, conversion per m² and month as in the Berlin overview.</li>
-      <li><strong>CO2 costs</strong>: emissions per m² rounded to one decimal, step from the annex to the CO2KostAufG, landlord share halved or dropped under Section 9.</li>
-      <li><strong>Notice</strong>: delivery by the third working day, Saturday counts (Federal Court, VIII ZR 206/04), national and state holidays that can fall in the first days of a month.</li>
-      <li><strong>Index rent</strong>: Federal Statistical Office consumer price index 2020 = 100, monthly values up to {Object.keys(P.vpi.werte).sort().pop()}.</li>
+      <li><strong>Naturalisation</strong>: {P.naturalisation.residence_ans} years of residence, {P.naturalisation.reduite_ans} years after two years of degree-level study in France, none for a refugee; filing from age {P.naturalisation.depot_age}; answer within {P.naturalisation.delai_mois} months of the receipt ({P.naturalisation.delai_10ans_mois} months with ten years of residence), extendable once by {P.naturalisation.prolongation_mois} months.</li>
+      <li><strong>Marriage</strong>: {P.mariage.duree_ans} years of marriage, {P.mariage.duree_longue_ans} years without three years of continuous residence in France since the wedding (unless the spouse was on the consular register); registration may be refused for {P.mariage.refus_ans} year, {P.mariage.refus_opposition_ans} years if the Government opposes.</li>
+      <li><strong>Resident card</strong>: {P.resident.residence_ans} years of residence (EU long-term, absences limited to {P.resident.absence_consecutive_mois} months in a row and {P.resident.absences_total_mois} months in total), {P.resident.conjoint_francais_ans} years of marriage for a French national's spouse, French level {P.resident.langue}.</li>
+      <li><strong>Renewal</strong>: filing between {P.renouvellement.au_plus_tot_mois} and {P.renouvellement.au_plus_tard_mois} months before expiry; a {P.renouvellement.recepisse_mois}-month receipt from the day after expiry. Dates are counted day-of-month to day-of-month; a 31st becomes the last day of a shorter month.</li>
     </ul>
-    <h2>What the calculators cannot do</h2>
+    <h2>Salary thresholds</h2>
+    <p>Reference salary set by the order of 21 August 2025: {e(P.talent.salaire_ref)} gross a year for the talent card (skilled employee); {formatPercent(P.talent.cbe_coef - 1, 0, lang)} more, {e(P.talent.cbe)}, for the EU Blue Card. Company officer: three annual minimum wages ({e(P.talent.mandataire, 2)}). Status change after the job-search card: more than {e(P.rece.seuil_mensuel, 2)} gross a month, one and a half times the minimum wage. Employer tax: {formatPercent(P.taxe_employeur.long_taux, 0, lang)} of monthly pay for a contract of a year or more, capped at {e(P.taxe_employeur.long_plafond, 2)}.</p>
+    <h2>Waiting times: what we do not publish</h2>
+    <p>No prefecture publishes an average processing time, and the figures that circulate come from forums. We publish none. We only calculate the legal periods: the date on which the administration's silence counts as refusal (4 months in general, 90 days for students and the EU Blue Card, 6 months for family reunification) and the maximum time to answer a citizenship application.</p>
+    <h2>Checks</h2>
+    <p>Automated tests replay every rule with the examples on the official pages before each release. Date fields first show the day the site was built, then your browser's actual date. Everything is reviewed at least every {REVIEW_CYCLE_MONTHS} months and after every reform.</p>
+    <h2>Limits</h2>
     <ul>
-      <li>Determine the residential location of an address; the city's street directory does that.</li>
-      <li>Replace a court, which may set the reference rent differently in a given case, for instance from an expert opinion.</li>
-      <li>Set a rent reduction rate: no official table exists.</li>
-      <li>Cover furniture surcharges, social housing or student halls.</li>
+      <li>The "which permit" guidance applies the main conditions; the prefecture also weighs public order, integration and documents we cannot see.</li>
+      <li>Algerian nationals fall under the 1968 Franco-Algerian agreement, with its own rules; we flag it without fully simulating it.</li>
+      <li>The rules for Mayotte and the overseas collectivities are not covered.</li>
     </ul>
-    <h2>Sources</h2>
-    <ul>{sources.map((s) => <li><a href={s.url} rel="nofollow noopener" target="_blank">{s.label.en}</a></li>)}</ul>
-    <p>Review cycle: at least every {REVIEW_CYCLE_MONTHS} months. Please report errors to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Last check: <time datetime={LAST_UPDATED}>{d(LAST_UPDATED)}</time>.</p>
-  </div>
-  )}
+    <p>Spotted an error? <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Updated: {d(LAST_UPDATED)}.</p>
+    <Sources lang={lang} />
+  </div>)}
 </PageLayout>

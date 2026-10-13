@@ -5,19 +5,18 @@ import { AUTHOR_NAME, CONTACT_EMAIL, LAST_UPDATED, REVIEW_CYCLE_MONTHS } from '.
 import { route } from '../../i18n/routes';
 const lang = 'en';
 ---
-<PageLayout title="Contact: report a new rent index or a calculator error" description="Write to us when a city publishes a new rent index, a state changes its ordinance or a calculator gets something wrong. We do not advise on individual tenancies." lang={lang} noindex={true} breadcrumbs={[{ label: 'Contact' }]} showAuthor={false}>
+<PageLayout title="Contact SimulSejour: report a changed fee or official page" description="Write to us if an official page has changed, a stamp duty or threshold is out of date, or a calculator gets something wrong. We do not handle individual applications." lang={lang} noindex={true} breadcrumbs={[{ label: 'Contact' }]} showAuthor={false}>
   <div class="prose prose-slate max-w-none">
     <h1>Contact</h1>
-    <p>We read every message: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
-    <h2>What helps us most</h2>
-    <p>A link to the official source: your city's new rent index PDF, the gazette with an amended municipality list, or the section of the Civil Code that makes you doubt a result. For a calculation, please include the address from your browser bar; it carries your inputs but no name or address. Every confirmed error is fixed and added as a test case, as the <a href={route('editorial', lang)}>editorial policy</a> describes.</p>
-    <h2>Embedding the rent check</h2>
-    <p>Tenant associations, advice centres, property managers and newsrooms can embed the rent check free of charge: the code is on the <a href={route('widget', lang)}>embed page</a>.</p>
+    <p>One address, read by the publisher: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+    <h2>What helps us</h2>
+    <p>A link to the official source that contradicts a figure: the updated Service-Public.fr page, the order published in the Official Journal, or the article of the immigration code (CESEDA) or Civil Code. For a calculation, copy the address your browser shows after you enter values: it holds the inputs, never your name. Every confirmed error is fixed and becomes an automated test, as the <a href={route('editorial', lang)}>editorial policy</a> sets out.</p>
     <h2>What we do not do</h2>
-    <p>We do not review leases or letters, draft complaints or refer anyone to law firms. For your own case, the local tenants' association, your city's tenant advice service or a lawyer can help.</p>
-    <h2>Response time</h2><p>Usually within five working days, new rent indexes and ordinances first. We check every value at least every {REVIEW_CYCLE_MONTHS} months and whenever the rules change.</p>
+    <p>We do not review files, book prefecture appointments or answer questions about a personal situation: we are neither a government office nor a law firm. For your own file, contact your prefecture, OFII, a migrant-support association or a free legal-access point.</p>
+    <h2>Embedding a calculator</h2><p>Associations, universities, HR teams and newsrooms may embed the "which permit for my situation" calculator free of charge: the code is on the <a href={route('widget', lang)}>embed page</a>.</p>
+    <h2>Response time</h2><p>Usually within five working days; fee changes come first. Every amount is reviewed at least every {REVIEW_CYCLE_MONTHS} months and after each reform.</p>
     <h2>Publisher</h2>
     <LegalIdentity lang={lang} />
-    <p>See the <a href={route('terms', lang)}>legal notice</a>. Responsible: {AUTHOR_NAME}. As of: {LAST_UPDATED}.</p>
+    <p>See the <a href={route('terms', lang)}>legal notice</a>. Responsible: {AUTHOR_NAME}. Updated: {LAST_UPDATED}.</p>
   </div>
 </PageLayout>

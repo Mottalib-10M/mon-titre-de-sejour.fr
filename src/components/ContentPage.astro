@@ -8,14 +8,12 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import MiniSim from './calc/MiniSim';
 import Clamp from './Clamp.astro';
-import MietCheck from './calc/MietCheck';
-import NebenkostenRechner from './calc/NebenkostenRechner';
-import MinderungRechner from './calc/MinderungRechner';
-import KautionRechner from './calc/KautionRechner';
-import IndexRechner from './calc/IndexRechner';
-import ModernisierungRechner from './calc/ModernisierungRechner';
-import KuendigungRechner from './calc/KuendigungRechner';
-import Co2Rechner from './calc/Co2Rechner';
+import ArbreTitre from './calc/ArbreTitre';
+import CoutTitre from './calc/CoutTitre';
+import { NaturalisationCalc, MariageCalc } from './calc/Nationalite';
+import { ResidentCalc, PluriannuelleCalc, RenouvellementCalc, VlsCalc, DelaiCalc } from './calc/Cartes';
+import RegroupementCalc from './calc/Famille';
+import { TalentCalc, EmployeurCalc } from './calc/Travail';
 import { route, ROUTES, type Locale } from '../i18n/routes';
 import { label } from '../i18n/nav';
 import { t } from '../i18n/ui';
@@ -37,7 +35,7 @@ if (x.faqs.length) jsonLd.push(faqSchema(x.faqs, lang));
 const related = page.related.filter((id) => ROUTES.some((r) => r.id === id)).map((id) => ({ href: route(id, lang), name: label(id, lang), description: pageById(id)?.[lang].card ?? '' }));
 const sources = page.sources.map((k) => ({ name: P.sources[k].label[lang], url: P.sources[k].url }));
 const methodHref = route('method', lang);
-const cible = page.miniHref ?? 'mietpreisbremse-rechner';
+const cible = page.miniHref ?? 'cout-titre-de-sejour';
 const miniHref = ROUTES.some((r) => r.id === cible) ? route(cible, lang) : undefined;
 ---
 <PageLayout title={x.title} description={x.description} lang={lang} jsonLd={jsonLd} faqs={x.faqs} related={related} sources={sources} breadcrumbs={[{ label: x.nav }]}>
@@ -50,17 +48,19 @@ const miniHref = ROUTES.some((r) => r.id === cible) ? route(cible, lang) : undef
     {page.tool ? (
       <>
         <div data-outil>
-          {page.tool === 'mpb' && <MietCheck client:load lang={lang} methodHref={methodHref} mode="neu" lockMode={true} extended={true} />}
-          {page.tool === 'erhoehung' && <MietCheck client:load lang={lang} methodHref={methodHref} mode="erhoehung" lockMode={true} extended={true} />}
-          {page.tool === 'stadt' && <MietCheck client:load lang={lang} methodHref={methodHref} fixedStadt={page.ort} />}
-          {page.tool === 'land' && <MietCheck client:load lang={lang} methodHref={methodHref} fixedLand={page.ort} />}
-          {page.tool === 'nebenkosten' && <NebenkostenRechner client:load lang={lang} methodHref={methodHref} />}
-          {page.tool === 'minderung' && <MinderungRechner client:load lang={lang} methodHref={methodHref} />}
-          {page.tool === 'kaution' && <KautionRechner client:load lang={lang} methodHref={methodHref} />}
-          {page.tool === 'index' && <IndexRechner client:load lang={lang} methodHref={methodHref} />}
-          {page.tool === 'modernisierung' && <ModernisierungRechner client:load lang={lang} methodHref={methodHref} />}
-          {page.tool === 'kuendigung' && <KuendigungRechner client:load lang={lang} methodHref={methodHref} />}
-          {page.tool === 'co2' && <Co2Rechner client:load lang={lang} methodHref={methodHref} />}
+          {page.tool === 'arbre' && <ArbreTitre client:load lang={lang} methodHref={methodHref} />}
+          {page.tool === 'cout' && <CoutTitre client:load lang={lang} methodHref={methodHref} preset={(page.preset ?? 'salarie').split(':')[0]} presetOp={(page.preset ?? '').split(':')[1] ?? 'premiere'} />}
+          {page.tool === 'naturalisation' && <NaturalisationCalc client:load lang={lang} methodHref={methodHref} />}
+          {page.tool === 'mariage' && <MariageCalc client:load lang={lang} methodHref={methodHref} />}
+          {page.tool === 'resident' && <ResidentCalc client:load lang={lang} methodHref={methodHref} />}
+          {page.tool === 'pluriannuelle' && <PluriannuelleCalc client:load lang={lang} methodHref={methodHref} />}
+          {page.tool === 'renouvellement' && <RenouvellementCalc client:load lang={lang} methodHref={methodHref} />}
+          {page.tool === 'vls' && <VlsCalc client:load lang={lang} methodHref={methodHref} />}
+          {page.tool === 'delai' && <DelaiCalc client:load lang={lang} methodHref={methodHref} />}
+          {page.tool === 'regroupement' && <RegroupementCalc client:load lang={lang} methodHref={methodHref} focus="ressources" />}
+          {page.tool === 'logement' && <RegroupementCalc client:load lang={lang} methodHref={methodHref} focus="logement" />}
+          {page.tool === 'talent' && <TalentCalc client:load lang={lang} methodHref={methodHref} focus={(page.preset as 'talent' | 'cbe' | 'rece') ?? 'talent'} />}
+          {page.tool === 'employeur' && <EmployeurCalc client:load lang={lang} methodHref={methodHref} />}
         </div>
         <Clamp text={x.resume} lang={lang} id={`clamp-${page.id}`} class="mt-6 mb-6" />
       </>

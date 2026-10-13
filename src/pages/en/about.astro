@@ -2,27 +2,30 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import { YEAR, LAST_UPDATED, AUTHOR_NAME, CONTACT_EMAIL, AUTHOR_ROLE } from '../../data/site-config';
 import { route } from '../../i18n/routes';
-import { personSchema, organizationSchema, breadcrumbSchema, profilePageSchema } from '../../lib/seo';
+import { organizationSchema, breadcrumbSchema, profilePageSchema } from '../../lib/seo';
 import { displayDate } from '../../lib/format';
-import { LAENDER_VO } from '../../lib/engine/gebiet';
+import { P } from '../../lib/engine/params';
 const lang = 'en';
-const nGem = LAENDER_VO.reduce((s, l) => s + (l.mpb?.gemeinden.length ?? 0), 0);
+const nFiches = Object.keys(P.sources).filter((k) => k.startsWith('sp_')).length;
 ---
-<PageLayout title="Rent Check Germany 2026: Who Publishes It and Why Now" description="Who publishes this German rent check for 2026, why it works out the reference rent itself, where the ordinances come from and why we take no cut of refunds." lang={lang} jsonLd={[personSchema(lang), organizationSchema(lang), profilePageSchema({ path: route('about', lang), lang }), breadcrumbSchema([{ name: 'Home', path: route('home', lang) }, { name: 'About', path: route('about', lang) }])]} breadcrumbs={[{ label: 'About' }]}>
-  <header class="mb-6"><h1 class="text-3xl font-bold text-navy-900 md:text-4xl">About this site</h1></header>
+<PageLayout title="SimulSejour 2026: Who Publishes It and Why It Calculates" description="SimulSejour 2026: who publishes these French residence and citizenship calculators, where the amounts come from, what we do not do and how to report errors." lang={lang} jsonLd={[organizationSchema(lang), profilePageSchema({ path: route('about', lang), lang }), breadcrumbSchema([{ name: 'Home', path: route('home', lang) }, { name: 'About', path: route('about', lang) }])]} breadcrumbs={[{ label: 'About' }]}>
+  <header class="mb-6"><h1 class="text-3xl font-bold text-navy-900 md:text-4xl">About SimulSejour</h1></header>
   <div class="prose prose-slate max-w-none">
     <div class="not-prose mb-6"><p class="text-lg font-semibold text-navy-900">{AUTHOR_NAME}</p><p class="text-navy-700">{AUTHOR_ROLE[lang]}</p></div>
-    <p>Radif Partners publishes independent calculators on everyday money and legal questions. This site answers the question every tenant in Germany faces sooner or later, when signing a new lease or opening a rent increase letter: is this rent allowed?</p>
-    <h2>What we set out to do better</h2>
-    <p>Search for a German rent index today and you find your city's PDF, or a calculator whose first question is the local reference rent, which is exactly the figure you were looking for. Whether your municipality has a 15 or 20 per cent cap, and whether the rent brake was in force on the day you signed, you are left to find in a state ordinance.</p>
-    <p>So this site does not ask you for the reference rent where it may calculate it itself: in Berlin from the 2026 index, in Hamburg from the 2025 index, in Dortmund from the 2025/2026 index. For every municipality it applies the rent brake and the increase cap from its state's ordinance, with start and end dates. That makes it more precise than the first Google result, which asks you for the reference rent and leaves your municipality's rules open.</p>
+    <p>Radif Partners publishes independent calculators for procedures where a mistake is expensive. This one answers what every foreign national living in France, or about to move here, ends up asking: which permit to apply for, what it will cost in tax stamps, from which day an application for the resident card or for citizenship can go in, and whether the household income is enough to bring the family over.</p>
+    <h2>Why this site exists</h2>
+    <p>The official Service-Public.fr pages are accurate, but they stop short of the arithmetic. They state a five-year requirement without telling you the day it ends for you, an income threshold "on average over twelve months" without doing the average, and a fee per permit without adding up the validated visa, the first card and the renewals. The private sites that rank first contradict themselves from one line to the next, still quote amounts from before 1 May 2026, or offer a "discovery call" instead of a figure.</p>
+    <p>This site does better than the first Google result because it works out, for each person's situation, the total stamp cost, the date of eligibility for the resident card or citizenship, the family-reunification income threshold based on the minimum wage actually in force, and the renewal timetable, with every rule citing its dated official page, and with no contact form and no invented prefecture waiting time.</p>
     <h2>How we work</h2>
-    <p>Scripts read the Berlin, Hamburg and Dortmund values from the official publications, and tests check them against the worked examples in the brochures. The rent-brake lists, {nGem} municipalities across the states that have an ordinance, come from the official gazettes, and each count was checked against the official text. Cities that reserve the rights to their index are respected: we take no figure from them and link their official tool instead. The <a href={route('method', lang)}>method page</a> has the details.</p>
+    <p>We read {nFiches} Service-Public.fr pages on 13 October 2026, together with the official notice on the fee increase of 1 May 2026 and the minimum-wage series published by Insee, the national statistics office. Every amount lives in a single parameter file with its source and date, and every calculation rule is checked by an automated test before publication. The <a href={route('method', lang)}>method page</a> has the details.</p>
     <h2>What we are not</h2>
-    <p>We are not a tenants' association, a law firm or a collection service for overpaid rent. We take no share of any refund, refer no one and give no legal advice on individual cases. In a dispute, the local tenants' association (Mieterverein), public advice centres or a tenancy lawyer can help.</p>
-    <h2>Funding</h2><p>The calculators are free and store nothing. If advertising ever appears, it will never sit above a calculator.</p>
-    <h2>Written for newcomers</h2><p>Every page exists in German and English. The English pages are written for people who moved to Germany and want to understand their first German lease; German terms are explained where they first appear.</p>
-    <h2>Report an error</h2><p>Has a city published a new rent index or a state changed an ordinance? Write to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. See also the <a href={route('editorial', lang)}>editorial policy</a> and the <a href={route('terms', lang)}>legal notice</a>.</p>
-    <p class="text-sm text-navy-600">Legal status {YEAR}, checked on <time datetime={LAST_UPDATED}>{displayDate(LAST_UPDATED, 'en-GB')}</time>.</p>
+    <p>We are not a government office, a law firm or an appointment-booking service. The site is independent of the Interior Ministry, the prefectures, OFII (the French immigration and integration office) and the ANEF online portal. We collect no phone numbers or addresses, sell no support package and recommend no provider. What we publish is general information, not legal advice. For a difficult case, migrant-support associations, free legal-access points (points d'accès au droit) or a lawyer can help.</p>
+    <h2>Prefecture waiting times</h2>
+    <p>Many sites publish "per prefecture" waiting times collected on forums. No official source publishes them, and one prefecture may process one file in three weeks and another in eight months. We therefore only show the periods the law sets: the period after which silence counts as refusal, and the maximum time to answer a citizenship application.</p>
+    <h2>Written for people living in France</h2>
+    <p>Every page exists in French and English. The English pages are for people settled in France who read English more easily: seconded staff, students, spouses. French administrative terms are kept and explained, because they are the words printed on the forms.</p>
+    <h2>Funding</h2><p>The calculators are free and store nothing. If advertising ever appears, it will never sit above a calculation.</p>
+    <h2>Report an error</h2><p>Has an amount changed or a page been updated? Write to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. See also the <a href={route('editorial', lang)}>editorial policy</a> and the <a href={route('terms', lang)}>legal notice</a>.</p>
+    <p class="text-sm text-navy-600">Rules for {YEAR}, checked on <time datetime={LAST_UPDATED}>{displayDate(LAST_UPDATED, 'en-GB')}</time>.</p>
   </div>
 </PageLayout>

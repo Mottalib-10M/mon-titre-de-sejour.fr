@@ -2,26 +2,24 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import { CONTACT_EMAIL } from '../../data/site-config';
 import { route } from '../../i18n/routes';
-const lang = 'de';
-const updated = '2026-10-12';
+const lang = 'fr';
+const updated = '2026-10-13';
 ---
-<PageLayout title="Cookies: warum diese Website keine setzt und was sie misst" description="Keine Cookies, kein Banner: der Mietcheck und die Rechner zu Nebenkosten, Kaution und Index speichern nichts. Gemessen wird nur, ob Seiten stabil laden, ohne Cookies." lang={lang} noindex={true} breadcrumbs={[{ label: 'Cookies' }]} showAuthor={false}>
+<PageLayout title="Cookies SimulSéjour : aucun cookie, aucun bandeau à accepter" description="Aucun cookie et aucun bandeau : les simulateurs de titre de séjour, de timbre fiscal et de naturalisation ne retiennent rien. Seule la stabilité du site est mesurée, sans cookie." lang={lang} noindex={true} breadcrumbs={[{ label: 'Cookies' }]} showAuthor={false}>
   <div class="prose prose-slate max-w-none">
     <h1>Cookies</h1>
-    <p>Diese Website <strong>setzt keine Cookies</strong>. Deshalb gibt es auch kein Cookie-Banner: Es gibt nichts zuzustimmen. Die Einzelheiten stehen in der <a href={route('privacy', lang)}>Datenschutzerklärung</a>.</p>
-    <h2>Die Rechner merken sich nichts</h2>
-    <p>Ob Sie Ihre Kaltmiete, die Vergleichsmiete Ihrer Berliner Wohnung oder eine Nebenkostenabrechnung prüfen: Die Werte bleiben in Ihrem Browser, werden weder in einem Cookie noch im Browserspeicher abgelegt und sind weg, sobald Sie die Seite schließen.</p>
-    <h2>Gemessen wird nur die Stabilität</h2>
-    <p>Um zu sehen, ob eine Seite abstürzt oder ein Rechner zu lange lädt, nutzen wir Microsoft Clarity im Modus <strong>ohne Cookies</strong>. Erfasst werden Fehler, Ladezeiten, Klicks ins Leere und das Scrollen. Weder Clarity-Cookies (<code>_clck</code>, <code>_clsk</code>) noch Microsoft-Cookies (<code>MUID</code>, <code>CLID</code>) werden gesetzt; jeder Seitenaufruf hat eine eigene Kennung, und Eingaben werden vor dem Senden maskiert.</p>
+    <p>Ce site <strong>ne dépose aucun cookie</strong> ; il n'affiche donc pas de bandeau, puisqu'il n'y a rien à accepter. Le détail figure dans la <a href={route('privacy', lang)}>politique de confidentialité</a>.</p>
+    <h2>Les simulateurs n'enregistrent rien</h2>
+    <p>Que vous calculiez le coût d'une carte, la date d'un dépôt de naturalisation ou le seuil du regroupement familial, les valeurs restent dans votre navigateur : ni cookie, ni stockage local. Elles disparaissent quand vous fermez la page.</p>
+    <h2>Seule la stabilité est mesurée</h2>
+    <p>Pour savoir si une page plante ou si un simulateur se charge trop lentement, nous utilisons Microsoft Clarity en mode <strong>sans cookie</strong> : erreurs, temps de chargement, clics sans effet et défilement. Aucun cookie Clarity (<code>_clck</code>, <code>_clsk</code>) ni Microsoft (<code>MUID</code>, <code>CLID</code>) ; un identifiant par page vue ; saisies masquées avant envoi.</p>
     <ul>
-      <li>Anbieter: Microsoft Ireland Operations Limited, One Microsoft Place, South County Business Park, Leopardstown, Dublin 18, Irland;</li>
-      <li>Speicherdauer: 30 Tage für Aufzeichnungen, 13 Monate für zusammengefasste Werte;</li>
-      <li>Rechtsgrundlage: berechtigtes Interesse (Art. 6 Abs. 1 lit. f DSGVO).</li>
+      <li>prestataire : Microsoft Ireland Operations Limited, One Microsoft Place, South County Business Park, Leopardstown, Dublin 18, Irlande ;</li>
+      <li>conservation : 30 jours pour les enregistrements, 13 mois pour les agrégats ;</li>
+      <li>base légale : intérêt légitime (article 6, paragraphe 1, f, du RGPD).</li>
     </ul>
-    <p>Keine Werbung, keine Social-Media-Schaltflächen, keine weiteren Messwerkzeuge.</p>
-    <h2>Eingebundener Rechner</h2>
-    <p>Die iframe-Fassung des Mietchecks für andere Websites lädt Clarity nicht und setzt keine Cookies.</p>
-    <h2>Messung ablehnen</h2>
-    <p>Sperren Sie die Domain clarity.ms in Ihrem Browser oder mit einem Blocker; alles funktioniert weiter. Fragen an <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Stand: {updated}.</p>
+    <p>Ni publicité, ni boutons de réseaux sociaux, ni autre outil de mesure.</p>
+    <h2>Simulateur intégré sur un autre site</h2><p>La version à intégrer (iframe) ne charge pas Clarity et ne dépose aucun cookie.</p>
+    <h2>Refuser la mesure</h2><p>Bloquez le domaine clarity.ms dans votre navigateur ou avec un bloqueur ; tout continue de fonctionner. Questions : <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Mise à jour : {updated}.</p>
   </div>
 </PageLayout>
