@@ -8,8 +8,8 @@ import { P } from '../../lib/engine/params';
 const lang = 'en';
 const nFiches = Object.keys(P.sources).filter((k) => k.startsWith('sp_')).length;
 ---
-<PageLayout title="SimulSejour 2026: Who Publishes It and Why It Calculates" description="SimulSejour 2026: who publishes these French residence and citizenship calculators, where the amounts come from, what we do not do and how to report errors." lang={lang} jsonLd={[organizationSchema(lang), profilePageSchema({ path: route('about', lang), lang }), breadcrumbSchema([{ name: 'Home', path: route('home', lang) }, { name: 'About', path: route('about', lang) }])]} breadcrumbs={[{ label: 'About' }]}>
-  <header class="mb-6"><h1 class="text-3xl font-bold text-navy-900 md:text-4xl">About SimulSejour</h1></header>
+<PageLayout title="Residence permit calculators 2026: who publishes them, why" description="Mon Titre de Séjour 2026: who publishes these French residence and citizenship calculators, where amounts come from, what we do not do, how to report errors." lang={lang} jsonLd={[organizationSchema(lang), profilePageSchema({ path: route('about', lang), lang }), breadcrumbSchema([{ name: 'Home', path: route('home', lang) }, { name: 'About', path: route('about', lang) }])]} breadcrumbs={[{ label: 'About' }]}>
+  <header class="mb-6"><h1 class="text-3xl font-bold text-navy-900 md:text-4xl">About Mon Titre de Séjour</h1></header>
   <div class="prose prose-slate max-w-none">
     <div class="not-prose mb-6"><p class="text-lg font-semibold text-navy-900">{AUTHOR_NAME}</p><p class="text-navy-700">{AUTHOR_ROLE[lang]}</p></div>
     <p>Radif Partners publishes independent calculators for procedures where a mistake is expensive. This one answers what every foreign national living in France, or about to move here, ends up asking: which permit to apply for, what it will cost in tax stamps, from which day an application for the resident card or for citizenship can go in, and whether the household income is enough to bring the family over.</p>

@@ -8,8 +8,8 @@ import { P } from '../../lib/engine/params';
 const lang = 'fr';
 const nFiches = Object.keys(P.sources).filter((k) => k.startsWith('sp_')).length;
 ---
-<PageLayout title="SimulSéjour 2026 : qui publie ce site et pourquoi il calcule" description="SimulSéjour 2026 : qui édite ces simulateurs du séjour et de la nationalité, d'où vient chaque montant, ce que nous ne faisons pas, comment signaler une erreur." lang={lang} jsonLd={[organizationSchema(lang), profilePageSchema({ path: route('about', lang), lang }), breadcrumbSchema([{ name: 'Accueil', path: route('home', lang) }, { name: 'À propos', path: route('about', lang) }])]} breadcrumbs={[{ label: 'À propos' }]}>
-  <header class="mb-6"><h1 class="text-3xl font-bold text-navy-900 md:text-4xl">À propos de SimulSéjour</h1></header>
+<PageLayout title="Mon Titre de Séjour 2026 : qui publie ce site, et pourquoi" description="Qui édite Mon Titre de Séjour, simulateurs du séjour et de la nationalité 2026 : d'où vient chaque montant, ce que nous ne faisons pas, où signaler une erreur." lang={lang} jsonLd={[organizationSchema(lang), profilePageSchema({ path: route('about', lang), lang }), breadcrumbSchema([{ name: 'Accueil', path: route('home', lang) }, { name: 'À propos', path: route('about', lang) }])]} breadcrumbs={[{ label: 'À propos' }]}>
+  <header class="mb-6"><h1 class="text-3xl font-bold text-navy-900 md:text-4xl">À propos de Mon Titre de Séjour</h1></header>
   <div class="prose prose-slate max-w-none">
     <div class="not-prose mb-6"><p class="text-lg font-semibold text-navy-900">{AUTHOR_NAME}</p><p class="text-navy-700">{AUTHOR_ROLE[lang]}</p></div>
     <p>Radif Partners édite des simulateurs indépendants sur des démarches où une erreur coûte cher. Celui-ci répond aux questions que se pose toute personne étrangère qui vit en France ou s'y prépare : quel titre demander, combien il coûtera en timbres fiscaux, à partir de quelle date déposer une demande de carte de résident ou de naturalisation, et si les revenus du foyer suffisent pour faire venir sa famille.</p>

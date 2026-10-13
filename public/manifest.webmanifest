@@ -1,6 +1,6 @@
 {
- "name": "SimulSéjour",
- "short_name": "SimulSéjour",
+ "name": "Mon Titre de Séjour",
+ "short_name": "Mon Titre de Séjour",
  "description": "Titres de séjour, naturalisation et visas en France : coût des timbres 2026, dates d'éligibilité, ressources du regroupement familial, seuils du passeport talent.",
  "start_url": "/fr/",
  "display": "standalone",

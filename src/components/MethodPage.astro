@@ -12,7 +12,7 @@ import { LAST_UPDATED, CONTACT_EMAIL, REVIEW_CYCLE_MONTHS } from '../data/site-c
 interface Props { lang: Locale }
 const { lang } = Astro.props;
 const fr = lang === 'fr';
-const title = fr ? 'Méthode SimulSéjour 2026 : barèmes, règles et sources datées' : 'Method SimulSejour 2026: Fees, Rules and Dated Sources';
+const title = fr ? 'Méthode Mon Titre de Séjour 2026 : barèmes, règles, sources' : 'Method Mon Titre de Séjour 2026: fees, rules, dated sources';
 const description = fr ? 'Méthode 2026 : comment nous lisons Service-Public, le CESEDA et le Code civil, calculons timbres, dates et seuils, testons chaque règle, sans délai inventé.' : 'Method 2026: how we read Service-Public pages, the CESEDA and Civil Code, compute stamps, dates and thresholds, test each rule, and invent no waiting times.';
 const h1 = fr ? 'Méthode et sources' : 'Method and sources';
 const path = route('method', lang);

@@ -1,6 +1,6 @@
 /** Configuration centrale du site (générée par new-site.py). */
-export const SITE_URL = "https://fr-sejour.example";
-export const SITE_NAMES: Record<string, string> = {"fr": "SimulSéjour", "en": "SimulSejour"};
+export const SITE_URL = "https://mon-titre-de-sejour.fr";
+export const SITE_NAMES: Record<string, string> = {"fr": "Mon Titre de Séjour", "en": "Mon Titre de Séjour"};
 export const LANG_TAGS: Record<string, string> = {"fr": "fr-FR", "en": "en-FR"};
 export const OG_LOCALES: Record<string, string> = {"fr": "fr_FR", "en": "en_GB"};
 export const LOCALE_TAG = 'fr-FR';
@@ -18,7 +18,7 @@ export const AUTHOR_DESC: Record<string, string> = {"fr": "Radif Partners transf
  *  themes reellement traites par le site, pas une liste de mots-cles : un sujet
  *  declare ici sans page qui le couvre est une declaration fausse. */
 export const KNOWS_ABOUT: Record<string, string[]> = {"fr": ["Titres de séjour (CESEDA)", "Timbres fiscaux des étrangers", "Naturalisation française", "Regroupement familial", "Passeport talent et carte bleue européenne"], "en": ["French residence permits (CESEDA)", "Residence permit stamp duties", "French naturalisation", "Family reunification in France", "Talent passport and EU Blue Card"]};
-export const CONTACT_EMAIL = "contact@fr-sejour.example";
+export const CONTACT_EMAIL = "contact@mon-titre-de-sejour.fr";
 export const THEME_COLOR = '#1F3A5F';
 export const LOGO_SYMBOL = 'TS';
 export const BING_VERIFY_CODE = '';
